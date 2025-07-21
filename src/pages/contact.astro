@@ -1,0 +1,61 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro';
+import { Users, Target, Heart, Globe, Award, Lightbulb } from 'lucide-astro';
+---
+
+<Layout title="Quiénes Somos - IEEE Student Branch Universidad de los Andes">
+  <Navigation />
+  
+  <main class="pt-16">
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-br from-ieee-lightblue to-white py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+          <h1 class="font-display font-bold text-4xl sm:text-5xl text-gray-900 mb-6">
+            Contact Us
+          </h1>
+          <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .value-card {
+    @apply bg-white p-6 rounded-xl shadow-sm border border-gray-200 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1;
+  }
+  
+  .value-icon {
+    @apply w-12 h-12 rounded-lg flex items-center justify-center text-white mb-4;
+  }
+  
+  .timeline-item {
+    @apply relative flex items-start space-x-4 pb-8;
+  }
+  
+  .timeline-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: 0.75rem;
+    top: 3rem;
+    bottom: -2rem;
+    width: 2px;
+    background: linear-gradient(to bottom, #e5e7eb, transparent);
+  }
+  
+  .timeline-marker {
+    @apply w-6 h-6 rounded-full border-4 border-white shadow-lg flex-shrink-0 mt-1;
+  }
+  
+  .timeline-content {
+    @apply bg-white p-6 rounded-lg shadow-sm border border-gray-200 flex-1;
+  }
+</style>
