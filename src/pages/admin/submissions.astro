@@ -1,0 +1,20 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Navigation from "../../components/Navigation.astro";
+import Footer from "../../components/Footer.astro";
+import AnimatedBackground from "../../components/Background.astro";
+import SubmissionsManager from "../../components/SubmissionsManager.tsx";
+---
+
+<Layout title="Submissions - Admin">
+    <div class="flex flex-col min-h-screen bg-ieee-dark-bg">
+        <Navigation />
+        <main class="flex-grow relative overflow-hidden">
+            <AnimatedBackground />
+            <div class="relative z-10 pt-24 pb-12">
+                <SubmissionsManager client:load />
+            </div>
+        </main>
+        <Footer />
+    </div>
+</Layout>

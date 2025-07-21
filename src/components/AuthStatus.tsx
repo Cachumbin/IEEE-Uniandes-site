@@ -1,9 +1,15 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { supabase } from '../lib/supabase';
+import { ChevronDown, Inbox, LogOut } from 'lucide-react';
+import type { User } from '@supabase/supabase-js';
+
 
 export default function AuthStatus() {
-    const [user, setUser] = useState<{ user_metadata?: { full_name?: string } } | null>(null);
+    
+    const [user, setUser] = useState<User | null>(null);
     const [loading, setLoading] = useState(true);
+    const [menuOpen, setMenuOpen] = useState(false);
+    const menuRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         const fetchSession = async () => {
@@ -19,9 +25,18 @@ export default function AuthStatus() {
                 setUser(session?.user ?? null);
             }
         );
+        
+        // Click outside to close dropdown
+        function handleClickOutside(event: MouseEvent) {
+            if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+                setMenuOpen(false);
+            }
+        }
+        document.addEventListener("mousedown", handleClickOutside);
 
         return () => {
             authListener.subscription.unsubscribe();
+            document.removeEventListener("mousedown", handleClickOutside);
         };
     }, []);
 
@@ -36,16 +51,25 @@ export default function AuthStatus() {
 
     if (user) {
         return (
-            <div className="flex items-center gap-3">
-                <span className="text-white text-sm hidden sm:block whitespace-nowrap">
-                    Hi, {user.user_metadata?.full_name?.split(' ')[0] || 'Admin'}
-                </span>
-                <button
-                    onClick={handleLogout}
-                    className="bg-red-600 hover:bg-red-700 text-white text-sm font-semibold py-2 px-4 rounded-lg transition-colors duration-300 whitespace-nowrap"
+            <div className="relative" ref={menuRef}>
+                <button 
+                    onClick={() => setMenuOpen(!menuOpen)}
+                    className="flex items-center gap-2 text-white text-sm font-semibold py-2 px-4 rounded-lg transition-colors duration-300 bg-ieee-dark-surface/50 hover:bg-ieee-dark-card"
                 >
-                    Logout
+                    <span>Hi, {user.user_metadata?.full_name?.split(' ')[0] || 'Admin'}</span>
+                    <ChevronDown size={16} className={`transition-transform ${menuOpen ? 'rotate-180' : ''}`} />
                 </button>
+
+                {menuOpen && (
+                    <div className="absolute top-full right-0 mt-2 w-48 bg-ieee-dark-card/95 backdrop-blur-md rounded-lg shadow-glow-blue border border-ieee-dark-border">
+                        <a href="/admin/submissions" className="flex items-center gap-3 w-full text-left px-4 py-3 text-sm hover:bg-neon-blue/10 text-ieee-dark-text hover:text-neon-blue transition-colors">
+                            <Inbox size={16} /> Submissions
+                        </a>
+                        <button onClick={handleLogout} className="flex items-center gap-3 w-full text-left px-4 py-3 text-sm hover:bg-red-500/10 text-red-400 hover:text-red-300 transition-colors">
+                            <LogOut size={16} /> Logout
+                        </button>
+                    </div>
+                )}
             </div>
         );
     }
@@ -53,7 +77,7 @@ export default function AuthStatus() {
     return (
         <a
             href="/login"
-            className="bg-gradient-to-r from-neon-blue to-ieee-blue text-white px-4 py-2 rounded-lg font-medium hover:shadow-glow-blue transition-all duration-300 transform hover:scale-105 border border-neon-blue/30 text-sm text-center whitespace-nowrap"
+            className="btn-primary-nav text-sm text-center whitespace-nowrap"
         >
             Admin Login
         </a>
