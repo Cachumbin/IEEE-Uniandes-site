@@ -1,0 +1,29 @@
+[
+  {
+    "title": "Fundación del proyecto",
+    "date": "2024-01-15",
+    "hour": "10:00",
+    "location": "Sala de reuniones, Edificio de Ingeniería",
+    "type" : "Meeting",
+    "chapters": ["RAS", "Computer Society", "IAS"],
+    "description": "El proyecto comenzó oficialmente con la primera reunión del equipo fundador."
+  },
+  {
+    "title": "Taller de robótica",
+    "date": "2024-02-20",
+    "hour": "14:00",
+    "location": "Laboratorio de Robótica, Edificio Mario Laserna",
+    "type" : "Workshop",
+    "chapters": ["WIE"],
+    "description": "Un taller práctico sobre los fundamentos de la robótica y la programación de robots."
+  },
+  {
+    "title": "Seminario sobre Inteligencia Artificial",
+    "date": "2024-03-05",
+    "hour": "16:00",
+    "location": "RGD-312",
+    "type" : "Seminar",
+    "chapters": ["SpaceTech", "IAS"],
+    "description": "Un seminario sobre las últimas tendencias en inteligencia artificial y su impacto en la industria."
+  }
+]

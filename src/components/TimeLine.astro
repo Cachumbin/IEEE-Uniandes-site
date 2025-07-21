@@ -1,56 +1,190 @@
 ---
-// Props: un arreglo de eventos
-const { events } = Astro.props;
----
+type TimelineEvent = {
+    title: string,
+    date: string,
+    hour: string,
+    location: string,
+    type : string,
+    chapters: Array<string>,
+    description: string
+};
 
-<div class="timeline">
-  {events.map(event => (
-    <div class="timeline-item">
-      <div class="timeline-date">{event.date}</div>
-      <div class="timeline-content">
-        <h3>{event.title}</h3>
-        <p>{event.description}</p>
+
+const timeline: TimelineEvent[] = [
+    {
+    title: "Fundación del proyecto",
+    date: "2024-01-15",
+    hour: "10:00",
+    location: "Sala de reuniones, Edificio de Ingeniería",
+    type : "Meeting",
+    chapters: ["RAS", "Computer Society", "IAS"],
+    description: "El proyecto comenzó oficialmente con la primera reunión del equipo fundador."
+  },
+  {
+    title: "Taller de robótica",
+    date: "2024-02-20",
+    hour: "14:00",
+    location: "Laboratorio de Robótica, Edificio Mario Laserna",
+    type : "Workshop",
+    chapters: ["WIE"],
+    description: "Un taller práctico sobre los fundamentos de la robótica y la programación de robots."
+  },
+  {
+    title: "Seminario sobre Inteligencia Artificial",
+    date: "2024-03-05",
+    hour: "16:00",
+    location: "RGD-312",
+    type : "Seminar",
+    chapters: ["SpaceTech", "IAS"],
+    description: "Un seminario sobre las últimas tendencias en inteligencia artificial y su impacto en la industria."
+  }
+];
+---
+<!-- Timeline horizontal con línea y conectores -->
+<div class="timeline-horizontal-wrapper">
+  <div class="timeline-horizontal-line"></div>
+  <div class="timeline-horizontal">
+    {timeline.map((event, idx) => (
+      <div class="timeline-horizontal-item">
+        <div class="timeline-horizontal-marker">
+          <span class="timeline-horizontal-dot"></span>
+          <span class="timeline-horizontal-date">{event.date}</span>
+        </div>
+        <div class="timeline-horizontal-content glass-card">
+          <h3>{event.title}</h3>
+          <p>{event.description}</p>
+          <div class="timeline-horizontal-details">
+            <span><b>Hora:</b> {event.hour}</span> | 
+            <span><b>Lugar:</b> {event.location}</span> | 
+            <span><b>Tipo:</b> {event.type}</span>
+          </div>
+          <div class="timeline-horizontal-chapters">
+            <b>Chapters:</b> {event.chapters.join(", ")}
+          </div>
+        </div>
       </div>
-    </div>
-  ))}
+    ))}
+  </div>
 </div>
 
 <style>
-  .timeline {
-    border-left: 2px solid #ccc;
-    padding-left: 1rem;
-    margin-left: 1rem;
-  }
-
-  .timeline-item {
+  .timeline-horizontal-wrapper {
     position: relative;
-    margin-bottom: 1.5rem;
+    padding: 3rem 1rem 2rem 1rem;
+    margin-bottom: 2rem;
   }
-
-  .timeline-item::before {
-    content: '';
+  .timeline-horizontal-line {
     position: absolute;
-    left: -10px;
-    top: 5px;
-    width: 12px;
-    height: 12px;
-    background: #3b82f6; /* azul */
-    border-radius: 50%;
+    top: 4.2rem;
+    left: 6vw;
+    right: 6vw;
+    height: 2.5px;
+    background: rgba(0,212,255,0.18);
+    box-shadow: 0 0 24px #00d4ff55, 0 0 8px #8b5cf655;
+    z-index: 0;
+    border-radius: 2px;
+    pointer-events: none;
+    transition: background 0.3s;
   }
-
-  .timeline-date {
-    font-weight: bold;
-    color: #555;
-    margin-bottom: 0.3rem;
-  }
-
-  .timeline-content h3 {
-    margin: 0 0 0.2rem 0;
-    font-size: 1.1rem;
-  }
-
-  .timeline-content p {
+  .timeline-horizontal {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    overflow-x: auto;
+    padding: 0;
     margin: 0;
-    color: #333;
+    scrollbar-width: thin;
   }
+  .timeline-horizontal-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 320px;
+    background: transparent;
+    border-radius: 1rem;
+    padding: 0;
+    position: relative;
+    z-index: 1;
+  }
+  .glass-card {
+    width: 100%;
+    background: rgba(26,26,46,0.7);
+    border-radius: 1rem;
+    box-shadow: 0 4px 24px rgba(0,210,255,0.10), 0 1.5px 8px #8b5cf655;
+    border: 2px solid rgba(0,210,255,0.18);
+    backdrop-filter: blur(16px) saturate(120%);
+    padding: 1.5rem;
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+  .glass-card:hover {
+    transform: translateY(-8px) scale(1.04);
+    box-shadow: 0 8px 32px #00d4ff44, 0 2px 12px #8b5cf655;
+    border-color: #00d4ff;
+  }
+  .timeline-horizontal-marker {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 2;
+  }
+  .timeline-horizontal-dot {
+    width: 22px;
+    height: 22px;
+    background: radial-gradient(circle, #00d4ff 60%, #8b5cf6 100%);
+    border-radius: 50%;
+    margin-right: 0.7rem;
+    box-shadow: 0 2px 16px #00d4ff99, 0 1px 8px #8b5cf655;
+    border: 4px solid #fff;
+    position: relative;
+    top: 2px;
+    animation: glow 2s infinite alternate;
+  }
+  @keyframes glow {
+    0% { box-shadow: 0 2px 16px #00d4ff99, 0 1px 8px #8b5cf655; }
+    100% { box-shadow: 0 4px 32px #00d4ffcc, 0 2px 16px #8b5cf699; }
+  }
+  .timeline-horizontal-date {
+    font-weight: bold;
+    color: #00d4ff;
+    font-size: 1rem;
+    letter-spacing: 0.5px;
+    text-shadow: 0 0 8px #00d4ff88;
+  }
+  .timeline-horizontal-content h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.2rem;
+    color: #FDB913;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    text-shadow: 0 0 6px #FDB91344;
+  }
+  .timeline-horizontal-content p {
+    margin: 0 0 0.5rem 0;
+    color: #e2e8f0;
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+  }
+  .timeline-horizontal-details {
+    font-size: 0.95rem;
+    color: #94a3b8;
+    margin-bottom: 0.5rem;
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+  }
+  .timeline-horizontal-chapters {
+    font-size: 0.95rem;
+    color: #00d4ff;
+    text-align: center;
+    margin-bottom: 0.5rem;
+    font-family: 'Inter', sans-serif;
+    text-shadow: 0 0 8px #00d4ff55;
+  }
+</style>
 </style>
