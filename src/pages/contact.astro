@@ -2,60 +2,89 @@
 import Layout from '../layouts/Layout.astro';
 import Navigation from '../components/Navigation.astro';
 import Footer from '../components/Footer.astro';
-import { Users, Target, Heart, Globe, Award, Lightbulb } from 'lucide-astro';
+import { Mail, MapPin, Users } from 'lucide-astro';
 ---
 
 <Layout title="Contact Us - IEEE Student Branch Universidad de los Andes">
   <Navigation />
-  
+
   <main class="pt-16">
-    <!-- Hero Section -->
-    <section class="bg-gradient-to-br from-ieee-lightblue to-white py-20">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center">
-          <h1 class="font-display font-bold text-4xl sm:text-5xl text-gray-900 mb-6">
-            Contact Us
+    <!-- Aurora Glassmorphism Hero -->
+    <section class="relative py-24 flex items-center justify-center min-h-[60vh] overflow-hidden bg-ieee-dark-bg">
+      <div class="absolute top-0 left-0 w-full h-full pointer-events-none z-0">
+        <div class="absolute left-10 top-10 w-96 h-96 bg-gradient-to-br from-neon-blue/40 to-neon-purple/20 rounded-full blur-3xl"></div>
+        <div class="absolute right-20 bottom-0 w-72 h-72 bg-gradient-to-tr from-ieee-gold/30 to-neon-green/20 rounded-full blur-2xl"></div>
+      </div>
+      <div class="relative z-10 max-w-3xl w-full mx-auto px-6">
+        <div class="glass-card p-10 rounded-3xl shadow-xl border border-white/10 backdrop-blur-xl bg-white/10">
+          <h1 class="font-display text-4xl sm:text-5xl font-bold text-center text-white mb-6 tracking-tight">
+            Let's Connect
           </h1>
-          <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            
+          <p class="text-lg text-ieee-dark-muted text-center mb-10">
+            ¿Tienes una idea, quieres colaborar o simplemente saludar? <br />
+            ¡Envíanos un mensaje y hagamos algo grande juntos!
           </p>
+          <form class="grid gap-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <input type="text" placeholder="Nombre" class="input-glass" required />
+              <input type="email" placeholder="Correo electrónico" class="input-glass" required />
+            </div>
+            <input type="text" placeholder="Asunto" class="input-glass" required />
+            <textarea placeholder="Tu mensaje..." rows="4" class="input-glass resize-none" required></textarea>
+            <button type="submit" class="w-full py-3 rounded-xl bg-gradient-to-r from-neon-blue via-neon-purple to-neon-pink text-white font-bold text-lg shadow-lg hover:scale-105 transition">
+              Enviar mensaje
+            </button>
+          </form>
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-8 mt-12">
+            <div class="flex items-center gap-3">
+              <Mail class="text-neon-blue" size={24} />
+              <span class="text-white font-medium">ieee@uniandes.edu.co</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <MapPin class="text-neon-green" size={24} />
+              <span class="text-white font-medium">Cra 1 #18A-12, Bogotá</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <Users class="text-ieee-gold" size={24} />
+              <span class="text-white font-medium">IEEE Student Branch</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
-
   </main>
 
   <Footer />
 </Layout>
 
 <style>
-  .value-card {
-    @apply bg-white p-6 rounded-xl shadow-sm border border-gray-200 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1;
-  }
-  
-  .value-icon {
-    @apply w-12 h-12 rounded-lg flex items-center justify-center text-white mb-4;
-  }
-  
-  .timeline-item {
-    @apply relative flex items-start space-x-4 pb-8;
-  }
-  
-  .timeline-item:not(:last-child)::after {
-    content: '';
-    position: absolute;
-    left: 0.75rem;
-    top: 3rem;
-    bottom: -2rem;
-    width: 2px;
-    background: linear-gradient(to bottom, #e5e7eb, transparent);
-  }
-  
-  .timeline-marker {
-    @apply w-6 h-6 rounded-full border-4 border-white shadow-lg flex-shrink-0 mt-1;
-  }
-  
-  .timeline-content {
-    @apply bg-white p-6 rounded-lg shadow-sm border border-gray-200 flex-1;
-  }
+.bg-ieee-dark-bg {
+  background: #0a0a0f;
+}
+.glass-card {
+  background: rgba(26,26,46,0.7);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  border-radius: 2rem;
+  border: 1px solid rgba(255,255,255,0.18);
+  backdrop-filter: blur(24px) saturate(120%);
+}
+.input-glass {
+  width: 100%;
+  padding: 0.75rem 1.25rem;
+  border-radius: 1rem;
+  border: 1px solid rgba(255,255,255,0.18);
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+  font-size: 1rem;
+  outline: none;
+  transition: border 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px 0 rgba(31, 38, 135, 0.15);
+}
+.input-glass:focus {
+  border-color: #00d4ff;
+  box-shadow: 0 0 0 2px #00d4ff44;
+}
+.text-ieee-dark-muted {
+  color: #b3b3c6;
+}
 </style>
