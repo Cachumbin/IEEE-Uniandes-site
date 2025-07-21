@@ -1,0 +1,133 @@
+IEEE Uniandes Website Style Guide
+
+1. Introduction & Design Philosophy
+
+This style guide provides a comprehensive overview of the visual and user interface standards for the IEEE Student Branch at Universidad de los Andes website. The goal is to maintain a consistent, professional, and modern brand identity across all pages and components. This guide is designed to be a living document, adaptable to future design trends and technological advancements.
+
+Core Principles:
+
+- Modern & Tech-Focused: The design should reflect the cutting-edge nature of IEEE and its members. This is achieved through a dark theme, vibrant neon accents, and subtle animations.
+- Professional & Trustworthy: As an official student branch of a prestigious organization, the website must convey credibility and professionalism. This is reflected in the clean layout, consistent typography, and organized structure.
+- Engaging & User-Friendly: The website should be intuitive and easy to navigate for all users, from prospective members to industry partners. Interactive elements and clear calls-to-action are key to achieving this.
+- AI-Development Friendly: This guide is structured to be easily parsed by large language models. By providing clear definitions for colors, typography, components, and layouts, we can leverage AI to accelerate development and ensure consistency.
+
+2. Awwwards-Inspired Enhancements
+
+To elevate the website's aesthetic and move beyond a basic design, we will adopt a dark-themed, visually rich style inspired by Awwwards-winning websites.
+
+Key Features:
+
+- Dark Theme as Primary: The entire website will use a dark background, creating a sophisticated and immersive experience.
+- Neon Accents: Vibrant, neon colors will be used for highlights, calls-to-action, and decorative elements to create a futuristic and energetic feel.
+- Layered Backgrounds: We will use a combination of subtle gradients, blurred shapes, and floating geometric elements to add depth and visual interest to the background.
+- Glassmorphism/Aurora UI: Components like cards and navigation bars will feature blurred, semi-transparent backgrounds to create a "glass-like" effect.
+- Micro-interactions & Animations: Subtle animations on hover, scroll, and page load will be used to create a more dynamic and engaging user experience.
+
+3. Color Palette
+
+The color palette is divided into several categories to ensure a consistent and harmonious design.
+
+Primary Colors:
+
+- IEEE Blue: #00629B (Tailwind: ieee-blue) - The primary brand color of IEEE, used for key branding elements and calls-to-action.
+- IEEE Gold: #FDB913 (Tailwind: ieee-gold) - A secondary brand color used for accents and highlights.
+- IEEE Navy: #003366 (Tailwind: ieee-navy) - A darker shade of blue for backgrounds and text.
+
+Dark Theme Colors:
+
+- Dark BG: #0a0a0f (Tailwind: ieee-dark-bg) - The main background color for the entire website.
+- Dark Surface: #1a1a2e (Tailwind: ieee-dark-surface) - A slightly lighter shade for surface elements like cards and navigation.
+- Dark Card: #16213e (Tailwind: ieee-dark-card) - The background color for cards.
+- Dark Border: #2a2a3e (Tailwind: ieee-dark-border) - The color for borders and dividers.
+- Dark Text: #e2e8f0 (Tailwind: ieee-dark-text) - The primary text color.
+- Dark Muted: #94a3b8 (Tailwind: ieee-dark-muted) - A muted text color for secondary information and paragraphs.
+
+Neon Accent Colors:
+
+These colors are used for highlights, gradients, and glow effects to create a modern, tech-focused aesthetic.
+
+- Neon Blue: #00d4ff (Tailwind: neon-blue)
+- Neon Purple: #8b5cf6 (Tailwind: neon-purple)
+- Neon Pink: #ec4899 (Tailwind: neon-pink)
+- Neon Green: #10b981 (Tailwind: neon-green)
+- Neon Orange: #f59e0b (Tailwind: neon-orange)
+
+4. Typography
+
+The website uses two primary font families to create a clear and readable hierarchy.
+
+Font Families:
+
+- Display Font: Poppins is used for headings and other large, prominent text to create a modern and friendly feel.
+- Sans-serif Font: Inter is used for all body text, paragraphs, and smaller text elements for its excellent readability.
+
+Text Styles:
+
+- H1: Poppins, Bold (font-display font-bold) - Main page titles, typically with a gradient text effect.
+- H2: Poppins, Bold (font-display font-bold) - Section titles.
+- H3: Poppins, Bold (font-display font-bold) - Sub-section titles and card titles.
+- Paragraph: Inter, Normal (text-lg text-gray-600) - Standard body text.
+- Links: Inter, Medium (nav-link) - Navigation links with a hover effect.
+
+5. Components
+
+This section details the various UI components used throughout the website.
+
+Buttons:
+
+- Primary Button: Used for the most important calls-to-action.
+  - Style: Gradient background from neon-blue to ieee-blue, white text, and a glow-blue shadow on hover.
+  - Tailwind: btn-primary-nav
+- Secondary Button: Used for less prominent actions.
+  - Style: Semi-transparent dark background with a neon blue border.
+  - Tailwind: btn-secondary-hero
+- White Button: Used in dark-themed sections for contrast.
+  - Style: White background with navy text.
+  - Tailwind: btn-white
+- Outline White Button:
+  - Style: White outline with white text, changing to a white background and navy text on hover.
+  - Tailwind: btn-outline-white
+
+Navigation Bar:
+
+The navigation bar is a fixed element at the top of the page with a blurred, semi-transparent background.
+
+- Background: bg-ieee-dark-surface/80 backdrop-blur-md
+- Border: A bottom border with the color ieee-dark-border.
+- Links: Use the nav-link style with a gradient underline effect on hover.
+- Dropdown Menus: Feature a subtle glow and fade-in animation.
+
+Cards:
+
+Cards are used to display information about events, news, and team members. They feature a subtle border, rounded corners, and a hover effect that lifts the card and adds a shadow.
+
+- Featured Member Card: featured-member-card class with a larger shadow and translation effect on hover.
+- Standard Member Card: member-card class with a more subtle hover effect.
+- Event Cards: featured-event-card and standard-event-card classes with similar styling to member cards.
+
+Footer:
+
+The footer contains quick links, contact information, and social media icons.
+
+- Background: bg-ieee-dark-bg with blurred, decorative gradients.
+- Links: footer-link style with a color transition on hover.
+- Social Links: Circular icons with a background color change and glow effect on hover.
+
+6. Layout & Spacing
+
+The website uses a responsive layout based on a max-w-7xl container and a standard spacing scale provided by Tailwind CSS.
+
+- Container: The main content is centered within a max-w-7xl mx-auto container with padding for different screen sizes.
+- Grid: A flexible grid system is used for laying out content, typically with 1, 2, or 3 columns.
+- Spacing: Margins and paddings are applied using Tailwind's spacing scale to ensure consistency.
+
+7. Animations & Transitions
+
+Animations are used to create a dynamic and engaging user experience.
+
+- Fade-in: animate-fade-in for elements that appear on page load.
+- Slide-up: animate-slide-up for hero section text to create a staggered animation effect.
+- Float: animate-float for background elements to create a sense of depth and movement.
+- Glow: shadow-glow-blue and other glow effects are applied to buttons and other interactive elements on hover.
+
+By following this style guide, we can ensure that the IEEE Uniandes website remains a modern, professional, and user-friendly platform that effectively represents the student branch and its mission. The adoption of Awwwards-inspired design elements will further enhance the site's visual appeal and create a more memorable experience for all users.
