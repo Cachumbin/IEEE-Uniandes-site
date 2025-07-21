@@ -1,13 +1,18 @@
 ---
-import { Menu, X, ChevronDown } from 'lucide-astro';
+import { Menu, X, ChevronDown } from "lucide-astro";
+import AuthStatus from "./AuthStatus.tsx";
 ---
 
-<nav class="fixed top-0 left-0 w-full z-50 bg-ieee-dark-surface/80 backdrop-blur-md border-b border-ieee-dark-border">
+<nav
+  class="fixed top-0 left-0 w-full z-50 bg-ieee-dark-surface/80 backdrop-blur-md border-b border-ieee-dark-border"
+>
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between items-center h-16">
       <!-- Logo -->
       <div class="flex items-center space-x-3">
-        <div class="w-10 h-10 bg-gradient-to-br from-neon-blue to-ieee-blue rounded-lg flex items-center justify-center shadow-glow-blue">
+        <div
+          class="w-10 h-10 bg-gradient-to-br from-neon-blue to-ieee-blue rounded-lg flex items-center justify-center shadow-glow-blue"
+        >
           <span class="text-white font-bold text-sm">IEEE</span>
         </div>
         <div class="hidden sm:block">
@@ -24,23 +29,48 @@ import { Menu, X, ChevronDown } from 'lucide-astro';
         <div class="relative group">
           <button class="nav-link flex items-center space-x-1">
             <span>Nosotros</span>
-            <ChevronDown size={16} class="transition-transform group-hover:rotate-180 text-neon-blue" />
+            <ChevronDown
+              size={16}
+              class="transition-transform group-hover:rotate-180 text-neon-blue"
+            />
           </button>
-          <div class="absolute top-full left-0 mt-2 w-48 bg-ieee-dark-card/95 backdrop-blur-md rounded-lg shadow-glow-blue border border-ieee-dark-border opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-            <a href="/about" class="block px-4 py-3 text-sm hover:bg-neon-blue/10 text-ieee-dark-text hover:text-neon-blue transition-colors">Quiénes Somos</a>
-            <a href="/board" class="block px-4 py-3 text-sm hover:bg-neon-blue/10 text-ieee-dark-text hover:text-neon-blue transition-colors">Junta Directiva</a>
-            <a href="/volunteers" class="block px-4 py-3 text-sm hover:bg-neon-blue/10 text-ieee-dark-text hover:text-neon-blue transition-colors">Voluntarios</a>
+          <div
+            class="absolute top-full left-0 mt-2 w-48 bg-ieee-dark-card/95 backdrop-blur-md rounded-lg shadow-glow-blue border border-ieee-dark-border opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200"
+          >
+            <a
+              href="/about"
+              class="block px-4 py-3 text-sm hover:bg-neon-blue/10 text-ieee-dark-text hover:text-neon-blue transition-colors"
+              >Quiénes Somos</a
+            >
+            <a
+              href="/board"
+              class="block px-4 py-3 text-sm hover:bg-neon-blue/10 text-ieee-dark-text hover:text-neon-blue transition-colors"
+              >Junta Directiva</a
+            >
+            <a
+              href="/volunteers"
+              class="block px-4 py-3 text-sm hover:bg-neon-blue/10 text-ieee-dark-text hover:text-neon-blue transition-colors"
+              >Voluntarios</a
+            >
           </div>
         </div>
         <a href="/chapters" class="nav-link">Capítulos</a>
         <a href="/activities" class="nav-link">Actividades</a>
         <a href="/gallery" class="nav-link">Galería</a>
         <a href="/contact" class="nav-link">Contacto</a>
-        <a href="/join" class="btn-primary-nav">Únete a IEEE</a>
+
+        <!-- Dynamic Auth Status for Desktop -->
+        <div class="flex items-center space-x-4">
+          <a href="/join" class="btn-primary-nav">Únete a IEEE</a>
+          <AuthStatus client:load />
+        </div>
       </div>
 
       <!-- Mobile menu button -->
-      <button id="mobile-menu-btn" class="lg:hidden p-2 rounded-md text-ieee-dark-text hover:bg-ieee-dark-border">
+      <button
+        id="mobile-menu-btn"
+        class="lg:hidden p-2 rounded-md text-ieee-dark-text hover:bg-ieee-dark-border"
+      >
         <Menu size={24} id="menu-icon" />
         <X size={24} id="close-icon" class="hidden" />
       </button>
@@ -48,8 +78,11 @@ import { Menu, X, ChevronDown } from 'lucide-astro';
   </div>
 
   <!-- Mobile Navigation -->
-  <div id="mobile-menu" class="lg:hidden hidden bg-ieee-dark-surface/95 backdrop-blur-md border-t border-ieee-dark-border">
-    <div class="px-4 py-2 space-y-1">
+  <div
+    id="mobile-menu"
+    class="lg:hidden hidden bg-ieee-dark-surface/95 backdrop-blur-md border-t border-ieee-dark-border"
+  >
+    <div class="px-4 py-4 space-y-2">
       <a href="/" class="mobile-nav-link">Inicio</a>
       <a href="/about" class="mobile-nav-link">Quiénes Somos</a>
       <a href="/board" class="mobile-nav-link">Junta Directiva</a>
@@ -58,7 +91,16 @@ import { Menu, X, ChevronDown } from 'lucide-astro';
       <a href="/volunteers" class="mobile-nav-link">Voluntarios</a>
       <a href="/gallery" class="mobile-nav-link">Galería</a>
       <a href="/contact" class="mobile-nav-link">Contacto</a>
-      <a href="/join" class="mobile-nav-link bg-gradient-to-r from-neon-blue to-ieee-blue text-white shadow-glow-blue">Únete a IEEE</a>
+      <a
+        href="/join"
+        class="mobile-nav-link bg-gradient-to-r from-neon-blue to-ieee-blue text-white shadow-glow-blue"
+        >Únete a IEEE</a
+      >
+
+      <!-- Dynamic Auth Status for Mobile -->
+      <div class="border-t border-ieee-dark-border pt-4 mt-4">
+        <AuthStatus client:load />
+      </div>
     </div>
   </div>
 </nav>
@@ -67,43 +109,43 @@ import { Menu, X, ChevronDown } from 'lucide-astro';
   .nav-link {
     @apply text-ieee-dark-text hover:text-neon-blue font-medium transition-all duration-300 relative;
   }
-  
+
   .nav-link::after {
-    content: '';
+    content: "";
     position: absolute;
     bottom: -2px;
     left: 0;
     width: 0;
     height: 2px;
-    background: linear-gradient(90deg, #00d4ff, #FDB913);
+    background: linear-gradient(90deg, #00d4ff, #fdb913);
     transition: width 0.3s ease;
     box-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
   }
-  
+
   .nav-link:hover::after {
     width: 100%;
   }
-  
+
   .mobile-nav-link {
     @apply block px-3 py-2 text-base font-medium text-ieee-dark-text hover:text-neon-blue hover:bg-ieee-dark-border rounded-md transition-all duration-300;
   }
-  
+
   .btn-primary-nav {
-    @apply bg-gradient-to-r from-neon-blue to-ieee-blue text-white px-4 py-2 rounded-lg font-medium hover:shadow-glow-blue transition-all duration-300 transform hover:scale-105 border border-neon-blue/30;
+    @apply bg-gradient-to-r from-neon-blue to-ieee-blue text-white px-4 py-2 rounded-lg font-medium hover:shadow-glow-blue transition-all duration-300 transform hover:scale-105 border border-neon-blue/30 mr-4;
   }
 </style>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const menuIcon = document.getElementById('menu-icon');
-    const closeIcon = document.getElementById('close-icon');
-    
-    mobileMenuBtn?.addEventListener('click', () => {
-      mobileMenu?.classList.toggle('hidden');
-      menuIcon?.classList.toggle('hidden');
-      closeIcon?.classList.toggle('hidden');
+  document.addEventListener("DOMContentLoaded", () => {
+    const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+    const mobileMenu = document.getElementById("mobile-menu");
+    const menuIcon = document.getElementById("menu-icon");
+    const closeIcon = document.getElementById("close-icon");
+
+    mobileMenuBtn?.addEventListener("click", () => {
+      mobileMenu?.classList.toggle("hidden");
+      menuIcon?.classList.toggle("hidden");
+      closeIcon?.classList.toggle("hidden");
     });
   });
 </script>

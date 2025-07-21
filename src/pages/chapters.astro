@@ -1,0 +1,23 @@
+---
+import Layout from "../layouts/Layout.astro";
+import ChaptersManager from "../components/ChaptersManager.tsx";
+import Navigation from "../components/Navigation.astro";
+import Footer from "../components/Footer.astro";
+import Background from "../components/Background.astro";
+---
+
+<Layout title="Capítulos - IEEE Uniandes">
+    <div class="flex flex-col min-h-screen bg-ieee-dark-bg">
+        <Navigation />
+
+        <main class="flex-grow relative overflow-hidden">
+            <Background />
+
+            <div class="relative z-10 pt-24 pb-12">
+                <ChaptersManager client:load />
+            </div>
+        </main>
+
+        <Footer />
+    </div>
+</Layout>
