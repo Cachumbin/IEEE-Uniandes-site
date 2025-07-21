@@ -8,7 +8,11 @@ type TimelineEvent = {
     event: string, 
     chapters: Array<string>,
     link: string,
-    description: string
+    description: string,
+    objetivos: string,
+    asistentes: number,
+    resultadoClave: string,
+    orador: string,
 };
 
 
@@ -24,7 +28,11 @@ const timeline = [
     event: "General",
     chapters: ["RAS", "Computer Society", "IAS"],
     link: "https://...",
-    description: "El proyecto comenzó oficialmente con la primera reunión del equipo fundador."
+    description: "El proyecto comenzó oficialmente con la primera reunión del equipo fundador.",
+    objetivos: "Presentar la visión y los objetivos del proyecto.",
+    resultadoClave: "Equipo conformado y roles asignados.",
+    asistentes: 18,
+    orador: "Dra. Ana Gómez"
   },
   {
     title: "Taller de robótica",
@@ -35,7 +43,9 @@ const timeline = [
     event: "Past event",
     chapters: ["WIE"],
     link: "https://...",
-    description: "Un taller práctico sobre los fundamentos de la robótica y la programación de robots."
+    description: "Un taller práctico sobre los fundamentos de la robótica y la programación de robots.",
+    objetivos: "Aprender conceptos básicos de robótica y fomentar el trabajo en equipo.",
+    orador: "Ing. Laura Pérez",
   },
   {
     title: "Seminario sobre Inteligencia Artificial",
@@ -46,16 +56,16 @@ const timeline = [
     event: "Upcoming event",
     chapters: ["SpaceTech", "IAS"],
     link: "https://...",
-    description: "Un seminario sobre las últimas tendencias en inteligencia artificial y su impacto en la industria."
+    description: "Un seminario sobre las últimas tendencias en inteligencia artificial y su impacto en la industria.",
+    objetivos: "Difundir avances recientes en IA y promover el debate ético."
   },
   {
     title: "Hackathon de Innovación",
-    date: "2024-04-10",
-    hour: "09:00",
-    location: "Auditorio Principal, Edificio Mario Laserna", 
+    startDate: "2024-04-10",
+    endDate: "2024-04-11",
     type : "Hackathon",
     event: "Recurring event",
-    chapters: [],
+    chapters: ["Computer Society", "IAS"],
     link: "https://...",
     description: "Un evento de 24 horas donde los participantes desarrollan soluciones innovadoras a problemas reales."
   },
@@ -66,9 +76,22 @@ const timeline = [
     location: "", 
     type : "Project",
     event: "Actual project",
-    chapters: [],
+    chapters: ["WIE"],
     link: "https://...",
-    description: "Un proyecto que busca aplicar la tecnología para resolver problemas sociales en comunidades locales."
+    description: "Un proyecto que busca aplicar la tecnología para resolver problemas sociales en comunidades locales.",
+    comite: "Comité de Impacto Social"
+  },
+  {
+    title: "Proyecto de Automatización RAS",
+    date: "2025-03-10",
+    hour: "15:00",
+    location: "Laboratorio de Automatización",
+    type : "Project",
+    event: "Actual project",
+    chapters: ["RAS"],
+    link: "https://...",
+    description: "Desarrollo de sistemas automatizados para la gestión de recursos energéticos.",
+    comite: "Comité Técnico RAS"
   },
   {
     title: "Conferencia de Tecnología y Sociedad",
@@ -79,7 +102,8 @@ const timeline = [
     event: "Upcoming event",
     chapters: ["RAS", "Computer Society"],
     link: "https://...",
-    description: "Una conferencia que reúne a expertos en tecnología para discutir su impacto en la sociedad."
+    description: "Una conferencia que reúne a expertos en tecnología para discutir su impacto en la sociedad.",
+    objetivos: "Difundir avances recientes en IA y promover el debate ético."
   }
 ];
 
@@ -94,198 +118,261 @@ const currentProjects = timeline.filter(e => e.type === "Project" || e.event ===
 
 ---
 
-// Renderizado
+// Renderizado con pestañas
 <section class="relative py-24 bg-ieee-dark-bg">
   <div class="max-w-5xl mx-auto px-6 lg:px-8">
     <h2 class="text-4xl sm:text-5xl font-bold text-ieee-dark-text text-center mb-16 animate-slide-up">
       Our <span class="text-transparent bg-clip-text bg-gradient-to-r from-neon-blue via-neon-purple to-neon-pink">Activities</span>
     </h2>
 
-    <!-- Eventos Generales -->
-    {generalEvents.length > 0 && (
-      <div class="mb-16">
-        <h3 class="text-2xl font-bold text-neon-blue mb-6">Eventos Generales</h3>
-        <ol class="relative animate-fade-in timeline-vertical-rounded">
-          {generalEvents.map((event, index) => (
-            <li class="mb-14 ml-6 relative">
-              <div class="absolute w-5 h-5 bg-ieee-dark-surface border-2 border-neon-blue rounded-full left-[-12px] top-1/2 -translate-y-1/2 z-10 shadow-glow-blue"></div>
-              <div class="bg-ieee-dark-surface/60 backdrop-blur-md p-6 rounded-2xl border border-neon-blue/20 shadow-glow-blue hover:shadow-glow-purple transition duration-300">
-                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2 gap-2">
-                  <h3 class="text-xl font-semibold text-ieee-dark-text">{event.title}</h3>
-                  <span class="text-sm text-neon-blue flex items-center space-x-1">
-                    <Calendar size={16} />
-                    <span>{event.date}</span>
-                    <span class="text-ieee-dark-muted">{event.hour}</span>
-                  </span>
-                </div>
-                <div class="flex flex-wrap gap-2 mb-2">
-                  <span class="px-2 py-1 rounded bg-neon-blue/10 text-neon-blue text-xs font-semibold">{event.type}</span>
-                  <span class="px-2 py-1 rounded bg-neon-purple/10 text-neon-purple text-xs font-semibold">{event.location}</span>
-                  {event.chapters.map((chapter) => (
-                    <span class="px-2 py-1 rounded bg-neon-green/10 text-neon-green text-xs font-semibold">{chapter}</span>
-                  ))}
-                </div>
-                <p class="text-ieee-dark-muted text-base">{event.description}</p>
-                {event.link && (
-                  <a href={event.link} target="_blank" rel="noopener" class="inline-block mt-3 px-4 py-2 rounded-lg bg-neon-blue/10 text-neon-blue font-semibold text-sm hover:bg-neon-blue/20 transition">
-                    Ver más
-                  </a>
-                )}
-              </div>
-            </li>
-          ))}
-        </ol>
-      </div>
-    )}
+    <!-- El script para pestañas va al final del section -->
 
-    <!-- Próximos Eventos -->
-    {upcomingEvents.length > 0 && (
-      <div class="mb-16">
-        <h3 class="text-2xl font-bold text-neon-green mb-6">Próximos Eventos</h3>
-        <ol class="relative animate-fade-in timeline-vertical-rounded">
-          {upcomingEvents.map((event, index) => (
-            <li class="mb-14 ml-6 relative">
-              <div class="absolute w-5 h-5 bg-ieee-dark-surface border-2 border-neon-green rounded-full left-[-12px] top-1/2 -translate-y-1/2 z-10 shadow-glow-blue"></div>
-              <div class="bg-ieee-dark-surface/60 backdrop-blur-md p-6 rounded-2xl border border-neon-green/20 shadow-glow-blue hover:shadow-glow-purple transition duration-300">
-                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2 gap-2">
-                  <h3 class="text-xl font-semibold text-ieee-dark-text">{event.title}</h3>
-                  <span class="text-sm text-neon-green flex items-center space-x-1">
-                    <Calendar size={16} />
-                    <span>{event.date}</span>
-                    <span class="text-ieee-dark-muted">{event.hour}</span>
-                  </span>
-                </div>
-                <div class="flex flex-wrap gap-2 mb-2">
-                  <span class="px-2 py-1 rounded bg-neon-green/10 text-neon-green text-xs font-semibold">{event.type}</span>
-                  <span class="px-2 py-1 rounded bg-neon-purple/10 text-neon-purple text-xs font-semibold">{event.location}</span>
-                  {event.chapters.map((chapter) => (
-                    <span class="px-2 py-1 rounded bg-neon-green/10 text-neon-green text-xs font-semibold">{chapter}</span>
-                  ))}
-                </div>
-                <p class="text-ieee-dark-muted text-base">{event.description}</p>
-                {event.link && (
-                  <a href={event.link} target="_blank" rel="noopener" class="inline-block mt-3 px-4 py-2 rounded-lg bg-neon-green/10 text-neon-green font-semibold text-sm hover:bg-neon-green/20 transition">
-                    Ver más
-                  </a>
-                )}
-              </div>
-            </li>
-          ))}
-        </ol>
-      </div>
-    )}
+    <div class="flex justify-center mb-10 gap-2">
+      <button class="tab-btn px-4 py-2 rounded-lg font-semibold text-ieee-dark-text bg-ieee-dark-surface/60 border border-neon-blue/20 hover:bg-neon-blue/10 transition" data-tab="general" onclick="setTab('general')">Generales</button>
+      <button class="tab-btn px-4 py-2 rounded-lg font-semibold text-ieee-dark-text bg-ieee-dark-surface/60 border border-neon-green/20 hover:bg-neon-green/10 transition" data-tab="upcoming" onclick="setTab('upcoming')">Próximos</button>
+      <button class="tab-btn px-4 py-2 rounded-lg font-semibold text-ieee-dark-text bg-ieee-dark-surface/60 border border-neon-purple/20 hover:bg-neon-purple/10 transition" data-tab="past" onclick="setTab('past')">Pasados</button>
+      <button class="tab-btn px-4 py-2 rounded-lg font-semibold text-ieee-dark-text bg-ieee-dark-surface/60 border border-ieee-gold/20 hover:bg-ieee-gold/10 transition" data-tab="projects" onclick="setTab('projects')">Proyectos</button>
+      <button class="tab-btn px-4 py-2 rounded-lg font-semibold text-ieee-dark-text bg-ieee-dark-surface/60 border border-neon-blue/20 hover:bg-neon-blue/10 transition" data-tab="recurring" onclick="setTab('recurring')">Recurrentes</button>
+    </div>
 
-    <!-- Eventos Pasados -->
-    {pastEvents.length > 0 && (
-      <div class="mb-16">
-        <h3 class="text-2xl font-bold text-neon-purple mb-6">Eventos Pasados</h3>
-        <ol class="relative animate-fade-in timeline-vertical-rounded">
-          {pastEvents.map((event, index) => (
-            <li class="mb-14 ml-6 relative">
-              <div class="absolute w-5 h-5 bg-ieee-dark-surface border-2 border-neon-purple rounded-full left-[-12px] top-1/2 -translate-y-1/2 z-10 shadow-glow-blue"></div>
-              <div class="bg-ieee-dark-surface/60 backdrop-blur-md p-6 rounded-2xl border border-neon-purple/20 shadow-glow-blue hover:shadow-glow-purple transition duration-300">
-                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2 gap-2">
-                  <h3 class="text-xl font-semibold text-ieee-dark-text">{event.title}</h3>
-                  <span class="text-sm text-neon-purple flex items-center space-x-1">
-                    <Calendar size={16} />
-                    <span>{event.date}</span>
-                    <span class="text-ieee-dark-muted">{event.hour}</span>
-                  </span>
+    <div id="tab-general" class="tab-content">
+      {generalEvents.length > 0 && (
+        <div class="mb-16">
+          <h3 class="text-2xl font-bold text-neon-blue mb-6">Eventos Generales</h3>
+          <ol class="relative animate-fade-in timeline-vertical-rounded">
+            {generalEvents.map((event, index) => (
+              <li class="mb-14 ml-6 relative">
+                <div class="absolute w-5 h-5 bg-ieee-dark-surface border-2 border-neon-blue rounded-full left-[-12px] top-1/2 -translate-y-1/2 z-10 shadow-glow-blue"></div>
+                <div class="bg-ieee-dark-surface/60 backdrop-blur-md p-6 rounded-2xl border border-neon-blue/20 shadow-glow-blue hover:shadow-glow-purple transition duration-300">
+                  <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2 gap-2">
+                    <h3 class="text-xl font-semibold text-ieee-dark-text">{event.title}</h3>
+                    <div class="flex flex-col items-end">
+                      <span class="text-sm text-neon-blue flex items-center space-x-1">
+                        <Calendar size={16} />
+                        <span>{event.date}</span>
+                        <span class="text-ieee-dark-muted">{event.hour}</span>
+                      </span>
+                      {event.location && (
+                        <span class="text-sm text-neon-blue flex items-center space-x-1 mt-1">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c1.104 0 2-.896 2-2s-.896-2-2-2-2 .896-2 2 .896 2 2 2zm0 10c-4.418 0-8-7.163-8-10a8 8 0 1 1 16 0c0 2.837-3.582 10-8 10z"/></svg>
+                          {event.location}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                  <div class="flex flex-wrap gap-2 mb-2">
+                    <span class="px-2 py-1 rounded bg-neon-blue/10 text-neon-blue text-xs font-semibold">{event.type}</span>
+                    {event.chapters.map((chapter) => (
+                      <span class="px-2 py-1 rounded bg-neon-green/10 text-neon-green text-xs font-semibold">{chapter}</span>
+                    ))}
+                  </div>
+                  <p class="text-ieee-dark-muted text-base mb-2"><span class="font-semibold text-ieee-dark-text">Descripción:</span> {event.description}</p>
+                  {event.objetivos && (
+                    <p class="text-ieee-dark-muted text-base mb-2"><span class="font-semibold text-ieee-dark-text">Objetivos:</span> {event.objetivos}</p>
+                  )}
+                  {event.resultadoClave && (
+                    <p class="text-ieee-dark-muted text-base mb-2"><span class="font-semibold text-ieee-dark-text">Resultado clave:</span> {event.resultadoClave}</p>
+                  )}
+                  {typeof event.asistentes !== 'undefined' && (
+                    <p class="text-ieee-dark-muted text-base mb-2"><span class="font-semibold text-ieee-dark-text">Nº de asistentes:</span> {event.asistentes}</p>
+                  )}
+                  {event.orador && (
+                    <p class="text-ieee-dark-muted text-base mb-2"><span class="font-semibold text-ieee-dark-text">Orador:</span> {event.orador}</p>
+                  )}
+                  {event.link && (
+                    <a href={event.link} target="_blank" rel="noopener" class="inline-block mt-3 px-4 py-2 rounded-lg bg-neon-blue/10 text-neon-blue font-semibold text-sm hover:bg-neon-blue/20 transition">
+                      Ver más
+                    </a>
+                  )}
                 </div>
-                <div class="flex flex-wrap gap-2 mb-2">
-                  <span class="px-2 py-1 rounded bg-neon-purple/10 text-neon-purple text-xs font-semibold">{event.type}</span>
-                  <span class="px-2 py-1 rounded bg-neon-blue/10 text-neon-blue text-xs font-semibold">{event.location}</span>
-                  {event.chapters.map((chapter) => (
-                    <span class="px-2 py-1 rounded bg-neon-green/10 text-neon-green text-xs font-semibold">{chapter}</span>
-                  ))}
-                </div>
-                <p class="text-ieee-dark-muted text-base">{event.description}</p>
-                {event.link && (
-                  <a href={event.link} target="_blank" rel="noopener" class="inline-block mt-3 px-4 py-2 rounded-lg bg-neon-purple/10 text-neon-purple font-semibold text-sm hover:bg-neon-purple/20 transition">
-                    Ver más
-                  </a>
-                )}
-              </div>
-            </li>
-          ))}
-        </ol>
-      </div>
-    )}
+              </li>
+            ))}
+          </ol>
+        </div>
+      )}
+    </div>
 
-    <!-- Proyectos Actuales -->
-    {currentProjects.length > 0 && (
-      <div class="mb-16">
-        <h3 class="text-2xl font-bold text-ieee-gold mb-6">Proyectos Actuales</h3>
-        <ol class="relative animate-fade-in timeline-vertical-rounded">
-          {currentProjects.map((event, index) => (
-            <li class="mb-14 ml-6 relative">
-              <div class="absolute w-5 h-5 bg-ieee-dark-surface border-2 border-ieee-gold rounded-full left-[-12px] top-1/2 -translate-y-1/2 z-10 shadow-glow-blue"></div>
-              <div class="bg-ieee-dark-surface/60 backdrop-blur-md p-6 rounded-2xl border border-ieee-gold/20 shadow-glow-blue hover:shadow-glow-purple transition duration-300">
-                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2 gap-2">
-                  <h3 class="text-xl font-semibold text-ieee-dark-text">{event.title}</h3>
-                  <span class="text-sm text-ieee-gold flex items-center space-x-1">
-                    <Calendar size={16} />
-                    <span>{event.date}</span>
-                    <span class="text-ieee-dark-muted">{event.hour}</span>
-                  </span>
+    <div id="tab-upcoming" class="tab-content hidden">
+      {upcomingEvents.length > 0 && (
+        <div class="mb-16">
+          <h3 class="text-2xl font-bold text-neon-green mb-6">Próximos Eventos</h3>
+          <ol class="relative animate-fade-in timeline-vertical-rounded">
+            {upcomingEvents.map((event, index) => (
+              <li class="mb-14 ml-6 relative">
+                <div class="absolute w-5 h-5 bg-ieee-dark-surface border-2 border-neon-green rounded-full left-[-12px] top-1/2 -translate-y-1/2 z-10 shadow-glow-blue"></div>
+                <div class="bg-ieee-dark-surface/60 backdrop-blur-md p-6 rounded-2xl border border-neon-green/20 shadow-glow-blue hover:shadow-glow-purple transition duration-300">
+                  <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2 gap-2">
+                    <h3 class="text-xl font-semibold text-ieee-dark-text">{event.title}</h3>
+                    <div class="flex flex-col items-end">
+                      <span class="text-sm text-neon-green flex items-center space-x-1">
+                        <Calendar size={16} />
+                        <span>{event.date}</span>
+                        <span class="text-ieee-dark-muted">{event.hour}</span>
+                      </span>
+                      {event.location && (
+                        <span class="text-sm text-neon-green flex items-center space-x-1 mt-1">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c1.104 0 2-.896 2-2s-.896-2-2-2-2 .896-2 2 .896 2 2 2zm0 10c-4.418 0-8-7.163-8-10a8 8 0 1 1 16 0c0 2.837-3.582 10-8 10z"/></svg>
+                          {event.location}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                  <div class="flex flex-wrap gap-2 mb-2">
+                    {event.chapters.length > 0 && event.chapters.map((chapter) => (
+                      <span class="px-2 py-1 rounded bg-neon-green/10 text-neon-green text-xs font-semibold">{chapter}</span>
+                    ))}
+                  </div>
+                  <p class="text-ieee-dark-muted text-base mb-2"><span class="font-semibold text-ieee-dark-text">Descripción:</span> {event.description}</p>
+                  {typeof event.objetivos !== 'undefined' && event.objetivos !== '' && (
+                    <p class="text-ieee-dark-muted text-base mb-2"><span class="font-semibold text-ieee-dark-text">Objetivos:</span> {event.objetivos}</p>
+                  )}
+                  {event.orador && (
+                    <p class="text-ieee-dark-muted text-base mb-2"><span class="font-semibold text-ieee-dark-text">Orador:</span> {event.orador}</p>
+                  )}
+                  {event.link && (
+                    <a href={event.link} target="_blank" rel="noopener" class="inline-block mt-3 px-4 py-2 rounded-lg bg-neon-green/10 text-neon-green font-semibold text-sm hover:bg-neon-green/20 transition">
+                      Ver más
+                    </a>
+                  )}
                 </div>
-                <div class="flex flex-wrap gap-2 mb-2">
-                  <span class="px-2 py-1 rounded bg-ieee-gold/10 text-ieee-gold text-xs font-semibold">{event.type}</span>
-                  <span class="px-2 py-1 rounded bg-neon-blue/10 text-neon-blue text-xs font-semibold">{event.location}</span>
-                  {event.chapters.map((chapter) => (
-                    <span class="px-2 py-1 rounded bg-neon-green/10 text-neon-green text-xs font-semibold">{chapter}</span>
-                  ))}
-                </div>
-                <p class="text-ieee-dark-muted text-base">{event.description}</p>
-                {event.link && (
-                  <a href={event.link} target="_blank" rel="noopener" class="inline-block mt-3 px-4 py-2 rounded-lg bg-ieee-gold/10 text-ieee-gold font-semibold text-sm hover:bg-ieee-gold/20 transition">
-                    Ver más
-                  </a>
-                )}
-              </div>
-            </li>
-          ))}
-        </ol>
-      </div>
-    )}
+              </li>
+            ))}
+          </ol>
+        </div>
+      )}
+    </div>
 
-    <!-- Eventos Recurrentes -->
-    {recurringEvents.length > 0 && (
-      <div class="mb-16">
-        <h3 class="text-2xl font-bold text-neon-blue mb-6">Eventos Recurrentes</h3>
-        <ol class="relative animate-fade-in timeline-vertical-rounded">
-          {recurringEvents.map((event, index) => (
-            <li class="mb-14 ml-6 relative">
-              <div class="absolute w-5 h-5 bg-ieee-dark-surface border-2 border-neon-blue rounded-full left-[-12px] top-1/2 -translate-y-1/2 z-10 shadow-glow-blue"></div>
-              <div class="bg-ieee-dark-surface/60 backdrop-blur-md p-6 rounded-2xl border border-neon-blue/20 shadow-glow-blue hover:shadow-glow-purple transition duration-300">
-                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2 gap-2">
-                  <h3 class="text-xl font-semibold text-ieee-dark-text">{event.title}</h3>
-                  <span class="text-sm text-neon-blue flex items-center space-x-1">
-                    <Calendar size={16} />
-                    <span>{event.date}</span>
-                    <span class="text-ieee-dark-muted">{event.hour}</span>
-                  </span>
+    <div id="tab-past" class="tab-content hidden">
+      {pastEvents.length > 0 && (
+        <div class="mb-16">
+          <h3 class="text-2xl font-bold text-neon-purple mb-6">Eventos Pasados</h3>
+          <ol class="relative animate-fade-in timeline-vertical-rounded">
+            {pastEvents.map((event, index) => (
+              <li class="mb-14 ml-6 relative">
+                <div class="absolute w-5 h-5 bg-ieee-dark-surface border-2 border-neon-purple rounded-full left-[-12px] top-1/2 -translate-y-1/2 z-10 shadow-glow-blue"></div>
+                <div class="bg-ieee-dark-surface/60 backdrop-blur-md p-6 rounded-2xl border border-neon-purple/20 shadow-glow-blue hover:shadow-glow-purple transition duration-300">
+                  <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2 gap-2">
+                    <h3 class="text-xl font-semibold text-ieee-dark-text">{event.title}</h3>
+                    <div class="flex flex-col items-end">
+                      <span class="text-sm text-neon-purple flex items-center space-x-1">
+                        <Calendar size={16} />
+                        <span>{event.date}</span>
+                        <span class="text-ieee-dark-muted">{event.hour}</span>
+                      </span>
+                      {event.location && (
+                        <span class="text-sm text-neon-purple flex items-center space-x-1 mt-1">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c1.104 0 2-.896 2-2s-.896-2-2-2-2 .896-2 2 .896 2 2 2zm0 10c-4.418 0-8-7.163-8-10a8 8 0 1 1 16 0c0 2.837-3.582 10-8 10z"/></svg>
+                          {event.location}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                  <div class="flex flex-wrap gap-2 mb-2">
+                    {event.chapters.length > 0 && event.chapters.map((chapter) => (
+                      <span class="px-2 py-1 rounded bg-neon-purple/10 text-neon-purple text-xs font-semibold">{chapter}</span>
+                    ))}
+                  </div>
+                  <p class="text-ieee-dark-muted text-base mb-2"><span class="font-semibold text-ieee-dark-text">Descripción:</span> {event.description}</p>
+                  {typeof event.objetivos !== 'undefined' && event.objetivos !== '' && (
+                    <p class="text-ieee-dark-muted text-base mb-2"><span class="font-semibold text-ieee-dark-text">Objetivos:</span> {event.objetivos}</p>
+                  )}
+                  {event.orador && (
+                    <p class="text-ieee-dark-muted text-base mb-2"><span class="font-semibold text-ieee-dark-text">Orador:</span> {event.orador}</p>
+                  )}
+                  {event.link && (
+                    <a href={event.link} target="_blank" rel="noopener" class="inline-block mt-3 px-4 py-2 rounded-lg bg-neon-purple/10 text-neon-purple font-semibold text-sm hover:bg-neon-purple/20 transition">
+                      Ver más
+                    </a>
+                  )}
                 </div>
-                <div class="flex flex-wrap gap-2 mb-2">
-                  <span class="px-2 py-1 rounded bg-neon-blue/10 text-neon-blue text-xs font-semibold">{event.type}</span>
-                  <span class="px-2 py-1 rounded bg-neon-purple/10 text-neon-purple text-xs font-semibold">{event.location}</span>
-                  {event.chapters.map((chapter) => (
-                    <span class="px-2 py-1 rounded bg-neon-green/10 text-neon-green text-xs font-semibold">{chapter}</span>
-                  ))}
+              </li>
+            ))}
+          </ol>
+        </div>
+      )}
+    </div>
+
+    <div id="tab-projects" class="tab-content hidden">
+      {currentProjects.length > 0 && (
+        <div class="mb-16">
+          <h3 class="text-2xl font-bold text-ieee-gold mb-6">Proyectos de Capítulo</h3>
+          <ol class="relative animate-fade-in timeline-vertical-rounded">
+            {currentProjects.map((event, index) => (
+              <li class="mb-14 ml-6 relative">
+                <div class="absolute w-5 h-5 bg-ieee-dark-surface border-2 border-ieee-gold rounded-full left-[-12px] top-1/2 -translate-y-1/2 z-10 shadow-glow-blue"></div>
+                <div class="bg-ieee-dark-surface/60 backdrop-blur-md p-6 rounded-2xl border border-ieee-gold/20 shadow-glow-blue hover:shadow-glow-purple transition duration-300">
+                  <h3 class="text-xl font-semibold text-ieee-dark-text mb-2">{event.title}</h3>
+                  <div class="flex flex-wrap gap-2 mb-2">
+                    {event.chapters.length > 0 && event.chapters.map((chapter) => (
+                      <span class="px-2 py-1 rounded bg-ieee-gold/10 text-ieee-gold text-xs font-semibold">{chapter}</span>
+                    ))}
+                  </div>
+                  <p class="text-ieee-dark-muted text-base mb-2"><span class="font-semibold text-ieee-dark-text">Descripción:</span> {event.description}</p>
+                  {event.comite && (
+                    <p class="text-ieee-dark-muted text-base mb-2"><span class="font-semibold text-ieee-dark-text">Comité responsable:</span> {event.comite}</p>
+                  )}
+                  {event.link && (
+                    <a href={event.link} target="_blank" rel="noopener" class="inline-block mt-3 px-4 py-2 rounded-lg bg-ieee-gold/10 text-ieee-gold font-semibold text-sm hover:bg-ieee-gold/20 transition">
+                      Ver más
+                    </a>
+                  )}
                 </div>
-                <p class="text-ieee-dark-muted text-base">{event.description}</p>
-                {event.link && (
-                  <a href={event.link} target="_blank" rel="noopener" class="inline-block mt-3 px-4 py-2 rounded-lg bg-neon-blue/10 text-neon-blue font-semibold text-sm hover:bg-neon-blue/20 transition">
-                    Ver más
-                  </a>
-                )}
-              </div>
-            </li>
-          ))}
-        </ol>
-      </div>
-    )}
+              </li>
+            ))}
+          </ol>
+        </div>
+      )}
+    </div>
+
+    <div id="tab-recurring" class="tab-content hidden">
+      {recurringEvents.length > 0 && (
+        <div class="mb-16">
+          <h3 class="text-2xl font-bold text-neon-blue mb-6">Eventos Recurrentes</h3>
+          <ol class="relative animate-fade-in timeline-vertical-rounded">
+            {recurringEvents.map((event, index) => (
+              <li class="mb-14 ml-6 relative">
+                <div class="absolute w-5 h-5 bg-ieee-dark-surface border-2 border-neon-blue rounded-full left-[-12px] top-1/2 -translate-y-1/2 z-10 shadow-glow-blue"></div>
+                <div class="bg-ieee-dark-surface/60 backdrop-blur-md p-6 rounded-2xl border border-neon-blue/20 shadow-glow-blue hover:shadow-glow-purple transition duration-300">
+                  <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2 gap-2">
+                    <h3 class="text-xl font-semibold text-ieee-dark-text">{event.title}</h3>
+                    <span class="px-2 py-1 rounded bg-neon-blue/10 text-neon-blue text-xs font-semibold">{event.startDate} - {event.endDate}</span>
+                  </div>
+                  <div class="flex flex-wrap gap-2 mb-2">
+                    {event.chapters && event.chapters.length > 0 && event.chapters.map((chapter) => (
+                      <span class="px-2 py-1 rounded bg-neon-blue/10 text-neon-blue text-xs font-semibold">{chapter}</span>
+                    ))}
+                  </div>
+                  <p class="text-ieee-dark-muted text-base mb-2"><span class="font-semibold text-ieee-dark-text">Descripción:</span> {event.description}</p>
+                  {event.link && (
+                    <a href={event.link} target="_blank" rel="noopener" class="inline-block mt-3 px-4 py-2 rounded-lg bg-neon-blue/10 text-neon-blue font-semibold text-sm hover:bg-neon-blue/20 transition">
+                      Ver más
+                    </a>
+                  )}
+                </div>
+              </li>
+            ))}
+          </ol>
+        </div>
+      )}
+    </div>
   </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      function setTab(tab) {
+        document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+        document.querySelector(`.tab-btn[data-tab="${tab}"]`).classList.add('active');
+        document.querySelectorAll('.tab-content').forEach(content => content.classList.add('hidden'));
+        document.getElementById(`tab-${tab}`).classList.remove('hidden');
+      }
+      // Inicializa en la pestaña general
+      setTab('general');
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.addEventListener('click', function () {
+          setTab(this.getAttribute('data-tab'));
+        });
+      });
+    });
+  </script>
 </section>
 
 <style>
