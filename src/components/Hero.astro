@@ -1,23 +1,60 @@
 ---
-import { ArrowRight, Users, Calendar, Award, Play, ExternalLink } from 'lucide-astro';
+import {
+  ArrowRight,
+  Users,
+  Calendar,
+  Award,
+  Play,
+  ExternalLink,
+} from "lucide-astro";
 ---
 
-<section class="relative min-h-screen flex items-center overflow-hidden bg-ieee-dark-bg">
+<section
+  class="relative min-h-screen flex items-center overflow-hidden bg-ieee-dark-bg"
+>
   <!-- Floating Geometric Background -->
   <div class="absolute inset-0 pointer-events-none">
     <!-- Innovative Color Blur Orbs -->
-    <div class="absolute top-20 right-10 w-96 h-96 bg-gradient-to-br from-neon-blue/20 to-neon-purple/30 rounded-full blur-3xl animate-float"></div>
-    <div class="absolute bottom-32 left-16 w-80 h-80 bg-gradient-to-tr from-neon-pink/25 to-ieee-gold/20 rounded-full blur-2xl animate-blur-pulse"></div>
-    <div class="absolute top-1/3 left-1/4 w-64 h-64 bg-gradient-to-bl from-neon-green/15 to-neon-blue/20 rounded-full blur-2xl animate-float" style="animation-delay: 2s;"></div>
-    
+    <div
+      class="absolute top-20 right-10 w-96 h-96 bg-gradient-to-br from-neon-blue/20 to-neon-purple/30 rounded-full blur-3xl animate-float"
+    >
+    </div>
+    <div
+      class="absolute bottom-32 left-16 w-80 h-80 bg-gradient-to-tr from-neon-pink/25 to-ieee-gold/20 rounded-full blur-2xl animate-blur-pulse"
+    >
+    </div>
+    <div
+      class="absolute top-1/3 left-1/4 w-64 h-64 bg-gradient-to-bl from-neon-green/15 to-neon-blue/20 rounded-full blur-2xl animate-float"
+      style="animation-delay: 2s;"
+    >
+    </div>
+
     <!-- Innovative Geometric Containers -->
-    <div class="absolute top-1/4 left-1/3 w-32 h-32 bg-gradient-to-br from-neon-blue/10 to-transparent border border-neon-blue/20 rotate-45 rounded-2xl animate-float backdrop-blur-xs" style="animation-delay: 1s;"></div>
-    <div class="absolute bottom-1/4 right-1/4 w-24 h-24 bg-gradient-to-tr from-neon-orange/15 to-transparent border border-neon-orange/30 rotate-12 rounded-xl animate-float backdrop-blur-xs" style="animation-delay: 3s;"></div>
-    <div class="absolute top-1/2 right-16 w-16 h-16 bg-gradient-to-br from-neon-purple/20 to-transparent border border-neon-purple/40 rotate-45 animate-pulse-slow backdrop-blur-xs"></div>
-    
+    <div
+      class="absolute top-1/4 left-1/3 w-32 h-32 bg-gradient-to-br from-neon-blue/10 to-transparent border border-neon-blue/20 rotate-45 rounded-2xl animate-float backdrop-blur-xs"
+      style="animation-delay: 1s;"
+    >
+    </div>
+    <div
+      class="absolute bottom-1/4 right-1/4 w-24 h-24 bg-gradient-to-tr from-neon-orange/15 to-transparent border border-neon-orange/30 rotate-12 rounded-xl animate-float backdrop-blur-xs"
+      style="animation-delay: 3s;"
+    >
+    </div>
+    <div
+      class="absolute top-1/2 right-16 w-16 h-16 bg-gradient-to-br from-neon-purple/20 to-transparent border border-neon-purple/40 rotate-45 animate-pulse-slow backdrop-blur-xs"
+    >
+    </div>
+
     <!-- Floating Tech Elements -->
-    <div class="absolute top-16 left-1/2 w-4 h-4 bg-neon-blue rounded-full animate-bounce-slow shadow-glow-blue"></div>
-    <div class="absolute bottom-20 right-1/3 w-3 h-3 bg-neon-pink rounded-full animate-bounce-slow shadow-glow-pink" style="animation-delay: 1.5s;"></div>
+    <div
+      class="absolute top-16 left-1/2 w-4 h-4 bg-neon-blue rounded-full animate-bounce-slow shadow-glow-blue"
+    >
+    </div>
+    <div
+      class="absolute bottom-20 right-1/3 w-3 h-3 bg-neon-pink rounded-full animate-bounce-slow shadow-glow-pink"
+      style="animation-delay: 1.5s;"
+    >
+    </div>
   </div>
 
   <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -25,120 +62,213 @@ import { ArrowRight, Users, Calendar, Award, Play, ExternalLink } from 'lucide-a
       <!-- Content Side - Asymmetrical Layout -->
       <div class="lg:col-span-7 space-y-8 animate-fade-in">
         <!-- Floating Badge -->
-        <div class="inline-flex items-center space-x-3 bg-gradient-to-r from-neon-blue/10 to-ieee-gold/10 backdrop-blur-md border border-neon-blue/30 text-ieee-dark-text px-6 py-3 rounded-full text-sm font-medium shadow-glow-blue">
+        <div
+          class="inline-flex items-center space-x-3 bg-gradient-to-r from-neon-blue/10 to-ieee-gold/10 backdrop-blur-md border border-neon-blue/30 text-ieee-dark-text px-6 py-3 rounded-full text-sm font-medium shadow-glow-blue"
+        >
           <Award size={18} class="text-neon-blue" />
           <span>IEEE Region 9 Student Branch</span>
-          <div class="w-2 h-2 bg-neon-blue rounded-full animate-pulse shadow-glow-blue"></div>
+          <div
+            class="w-2 h-2 bg-neon-blue rounded-full animate-pulse shadow-glow-blue"
+          >
+          </div>
         </div>
-        
+
         <!-- Dynamic Headline with Staggered Animation -->
         <div class="space-y-6">
           <h1 class="font-display font-bold leading-none">
-            <span class="block text-5xl sm:text-6xl lg:text-7xl text-ieee-dark-text animate-slide-up">
+            <span
+              class="block text-5xl sm:text-6xl lg:text-7xl text-ieee-dark-text animate-slide-up"
+            >
               Innovando
             </span>
-            <span class="block text-4xl sm:text-5xl lg:text-6xl text-transparent bg-clip-text bg-gradient-to-r from-neon-blue via-neon-purple to-neon-pink animate-slide-up" style="animation-delay: 0.2s;">
+            <span
+              class="block text-4xl sm:text-5xl lg:text-6xl text-transparent bg-clip-text bg-gradient-to-r from-neon-blue via-neon-purple to-neon-pink animate-slide-up"
+              style="animation-delay: 0.2s;"
+            >
               el Futuro
             </span>
-            <span class="block text-3xl sm:text-4xl lg:text-5xl text-ieee-dark-muted animate-slide-up" style="animation-delay: 0.4s;">
+            <span
+              class="block text-3xl sm:text-4xl lg:text-5xl text-ieee-dark-muted animate-slide-up"
+              style="animation-delay: 0.4s;"
+            >
               Tecnológico
             </span>
           </h1>
-          
-          <p class="text-xl lg:text-2xl text-ieee-dark-muted max-w-2xl leading-relaxed animate-fade-in" style="animation-delay: 0.6s;">
-            Conectamos estudiantes visionarios en la Universidad de los Andes para 
-            <span class="text-neon-blue font-semibold">liderar la revolución tecnológica</span> 
+
+          <p
+            class="text-xl lg:text-2xl text-ieee-dark-muted max-w-2xl leading-relaxed animate-fade-in"
+            style="animation-delay: 0.6s;"
+          >
+            Conectamos estudiantes visionarios en la Universidad de los Andes
+            para
+            <span class="text-neon-blue font-semibold"
+              >liderar la revolución tecnológica</span
+            >
             en América Latina.
           </p>
         </div>
 
         <!-- Interactive Stats -->
-        <div class="grid grid-cols-3 gap-6 py-8 animate-fade-in" style="animation-delay: 0.8s;">
+        <div
+          class="grid grid-cols-3 gap-6 py-8 animate-fade-in"
+          style="animation-delay: 0.8s;"
+        >
           <div class="group cursor-pointer">
-            <div class="text-center p-4 rounded-xl hover:bg-ieee-dark-surface/50 backdrop-blur-sm border border-transparent hover:border-neon-blue/30 transition-all duration-300 hover:scale-105 hover:shadow-glow-blue">
-              <div class="text-3xl font-bold text-neon-blue group-hover:text-neon-purple transition-colors">200+</div>
-              <div class="text-sm text-ieee-dark-muted font-medium">Miembros Activos</div>
+            <div
+              class="text-center p-4 rounded-xl hover:bg-ieee-dark-surface/50 backdrop-blur-sm border border-transparent hover:border-neon-blue/30 transition-all duration-300 hover:scale-105 hover:shadow-glow-blue"
+            >
+              <div
+                class="text-3xl font-bold text-neon-blue group-hover:text-neon-purple transition-colors"
+              >
+                200+
+              </div>
+              <div class="text-sm text-ieee-dark-muted font-medium">
+                Miembros Activos
+              </div>
             </div>
           </div>
           <div class="group cursor-pointer">
-            <div class="text-center p-4 rounded-xl hover:bg-ieee-dark-surface/50 backdrop-blur-sm border border-transparent hover:border-neon-purple/30 transition-all duration-300 hover:scale-105 hover:shadow-glow-purple">
-              <div class="text-3xl font-bold text-neon-purple group-hover:text-neon-pink transition-colors">50+</div>
-              <div class="text-sm text-ieee-dark-muted font-medium">Eventos Anuales</div>
+            <div
+              class="text-center p-4 rounded-xl hover:bg-ieee-dark-surface/50 backdrop-blur-sm border border-transparent hover:border-neon-purple/30 transition-all duration-300 hover:scale-105 hover:shadow-glow-purple"
+            >
+              <div
+                class="text-3xl font-bold text-neon-purple group-hover:text-neon-pink transition-colors"
+              >
+                50+
+              </div>
+              <div class="text-sm text-ieee-dark-muted font-medium">
+                Eventos Anuales
+              </div>
             </div>
           </div>
           <div class="group cursor-pointer">
-            <div class="text-center p-4 rounded-xl hover:bg-ieee-dark-surface/50 backdrop-blur-sm border border-transparent hover:border-ieee-gold/30 transition-all duration-300 hover:scale-105 hover:shadow-lg">
-              <div class="text-3xl font-bold text-ieee-gold group-hover:text-neon-orange transition-colors">5</div>
-              <div class="text-sm text-ieee-dark-muted font-medium">Capítulos Técnicos</div>
+            <div
+              class="text-center p-4 rounded-xl hover:bg-ieee-dark-surface/50 backdrop-blur-sm border border-transparent hover:border-ieee-gold/30 transition-all duration-300 hover:scale-105 hover:shadow-lg"
+            >
+              <div
+                class="text-3xl font-bold text-ieee-gold group-hover:text-neon-orange transition-colors"
+              >
+                5
+              </div>
+              <div class="text-sm text-ieee-dark-muted font-medium">
+                Capítulos Técnicos
+              </div>
             </div>
           </div>
         </div>
 
         <!-- Dynamic CTA Buttons -->
-        <div class="flex flex-col sm:flex-row gap-4 animate-slide-up" style="animation-delay: 1s;">
-          <a href="/join" class="btn-primary-hero group overflow-hidden relative">
+        <div
+          class="flex flex-col sm:flex-row gap-4 animate-slide-up"
+          style="animation-delay: 1s;"
+        >
+          <a
+            href="/contact"
+            class="btn-primary-hero group overflow-hidden relative"
+          >
             <span class="relative z-10 flex items-center space-x-3">
               <span>Únete a IEEE</span>
-              <ArrowRight size={20} class="transition-transform group-hover:translate-x-1" />
+              <ArrowRight
+                size={20}
+                class="transition-transform group-hover:translate-x-1"
+              />
             </span>
-            <div class="absolute inset-0 bg-gradient-to-r from-ieee-navy to-ieee-blue transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+            <div
+              class="absolute inset-0 bg-gradient-to-r from-ieee-navy to-ieee-blue transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"
+            >
+            </div>
           </a>
-          
+
           <a href="/activities" class="btn-secondary-hero group">
-            <Play size={18} class="transition-transform group-hover:scale-110" />
+            <Play
+              size={18}
+              class="transition-transform group-hover:scale-110"
+            />
             <span>Explorar Actividades</span>
           </a>
         </div>
       </div>
 
       <!-- Visual Side - Creative Asymmetrical Design -->
-      <div class="lg:col-span-5 relative animate-slide-up" style="animation-delay: 0.4s;">
+      <div
+        class="lg:col-span-5 relative animate-slide-up"
+        style="animation-delay: 0.4s;"
+      >
         <!-- Main Visual Container -->
         <div class="relative group">
           <!-- Central Image/Visual -->
           <div class="relative z-10">
-            <div class="aspect-square rounded-3xl bg-gradient-to-br from-ieee-dark-surface/80 to-ieee-dark-card/60 backdrop-blur-md border border-neon-blue/30 p-8 shadow-glow-ieee hover:shadow-glow-blue transition-all duration-500 group-hover:scale-105">
-              <div class="w-full h-full bg-gradient-to-br from-neon-blue/10 to-neon-purple/20 rounded-2xl flex items-center justify-center relative overflow-hidden border border-neon-blue/20">
+            <div
+              class="aspect-square rounded-3xl bg-gradient-to-br from-ieee-dark-surface/80 to-ieee-dark-card/60 backdrop-blur-md border border-neon-blue/30 p-8 shadow-glow-ieee hover:shadow-glow-blue transition-all duration-500 group-hover:scale-105"
+            >
+              <div
+                class="w-full h-full bg-gradient-to-br from-neon-blue/10 to-neon-purple/20 rounded-2xl flex items-center justify-center relative overflow-hidden border border-neon-blue/20"
+              >
                 <!-- Central Icon -->
                 <div class="text-center space-y-6 relative z-10">
-                  <div class="w-24 h-24 bg-gradient-to-br from-neon-blue to-ieee-blue rounded-2xl mx-auto flex items-center justify-center transform rotate-3 hover:rotate-0 transition-transform duration-500 shadow-glow-blue border border-neon-blue/40">
+                  <div
+                    class="w-24 h-24 bg-gradient-to-br from-neon-blue to-ieee-blue rounded-2xl mx-auto flex items-center justify-center transform rotate-3 hover:rotate-0 transition-transform duration-500 shadow-glow-blue border border-neon-blue/40"
+                  >
                     <Users size={40} class="text-white" />
                   </div>
                   <div>
-                    <p class="text-ieee-dark-text font-bold text-lg">IEEE Student Branch</p>
-                    <p class="text-sm text-ieee-dark-muted">Universidad de los Andes</p>
+                    <p class="text-ieee-dark-text font-bold text-lg">
+                      IEEE Student Branch
+                    </p>
+                    <p class="text-sm text-ieee-dark-muted">
+                      Universidad de los Andes
+                    </p>
                   </div>
                 </div>
-                
+
                 <!-- Floating tech elements -->
-                <div class="absolute top-4 right-4 w-8 h-8 bg-neon-orange/30 border border-neon-orange/50 rounded-lg animate-pulse backdrop-blur-xs"></div>
-                <div class="absolute bottom-6 left-6 w-6 h-6 bg-neon-blue/40 border border-neon-blue/60 rounded-full animate-bounce backdrop-blur-xs" style="animation-delay: 1s;"></div>
+                <div
+                  class="absolute top-4 right-4 w-8 h-8 bg-neon-orange/30 border border-neon-orange/50 rounded-lg animate-pulse backdrop-blur-xs"
+                >
+                </div>
+                <div
+                  class="absolute bottom-6 left-6 w-6 h-6 bg-neon-blue/40 border border-neon-blue/60 rounded-full animate-bounce backdrop-blur-xs"
+                  style="animation-delay: 1s;"
+                >
+                </div>
               </div>
             </div>
           </div>
-          
+
           <!-- Floating Information Cards -->
-          <div class="absolute -top-8 -right-8 bg-ieee-dark-card/90 backdrop-blur-md rounded-2xl shadow-glow-blue p-6 animate-float border border-neon-blue/30">
+          <div
+            class="absolute -top-8 -right-8 bg-ieee-dark-card/90 backdrop-blur-md rounded-2xl shadow-glow-blue p-6 animate-float border border-neon-blue/30"
+          >
             <div class="flex items-center space-x-3">
               <Calendar size={24} class="text-neon-blue" />
               <div>
-                <p class="font-semibold text-sm text-ieee-dark-text">Próximo Evento</p>
-                <p class="text-xs text-ieee-dark-muted">Workshop Machine Learning</p>
+                <p class="font-semibold text-sm text-ieee-dark-text">
+                  Próximo Evento
+                </p>
+                <p class="text-xs text-ieee-dark-muted">
+                  Workshop Machine Learning
+                </p>
                 <p class="text-xs text-neon-blue font-medium">15 Feb 2025</p>
               </div>
             </div>
           </div>
-          
-          <div class="absolute -bottom-8 -left-8 bg-gradient-to-r from-neon-orange to-ieee-gold text-white rounded-2xl shadow-lg p-6 animate-float border border-neon-orange/40" style="animation-delay: 2s;">
+
+          <div
+            class="absolute -bottom-8 -left-8 bg-gradient-to-r from-neon-orange to-ieee-gold text-white rounded-2xl shadow-lg p-6 animate-float border border-neon-orange/40"
+            style="animation-delay: 2s;"
+          >
             <div class="text-center">
               <p class="font-bold text-lg">IEEEXtreme</p>
               <p class="text-xs opacity-90">Global Programming</p>
               <p class="text-xs opacity-90">Competition</p>
             </div>
           </div>
-          
+
           <!-- Small accent card -->
-          <div class="absolute top-1/2 -left-4 bg-gradient-to-br from-neon-purple to-ieee-navy text-white rounded-xl shadow-glow-purple p-4 animate-float border border-neon-purple/40" style="animation-delay: 1.5s;">
+          <div
+            class="absolute top-1/2 -left-4 bg-gradient-to-br from-neon-purple to-ieee-navy text-white rounded-xl shadow-glow-purple p-4 animate-float border border-neon-purple/40"
+            style="animation-delay: 1.5s;"
+          >
             <div class="flex items-center space-x-2">
               <ExternalLink size={16} />
               <span class="text-xs font-medium">IEEE.org</span>
@@ -149,9 +279,16 @@ import { ArrowRight, Users, Calendar, Award, Play, ExternalLink } from 'lucide-a
     </div>
 
     <!-- Scroll Indicator -->
-    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-      <div class="w-6 h-10 border-2 border-neon-blue/50 rounded-full flex justify-center backdrop-blur-sm">
-        <div class="w-1 h-3 bg-neon-blue rounded-full mt-2 animate-pulse shadow-glow-blue"></div>
+    <div
+      class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce"
+    >
+      <div
+        class="w-6 h-10 border-2 border-neon-blue/50 rounded-full flex justify-center backdrop-blur-sm"
+      >
+        <div
+          class="w-1 h-3 bg-neon-blue rounded-full mt-2 animate-pulse shadow-glow-blue"
+        >
+        </div>
       </div>
     </div>
   </div>
@@ -161,11 +298,11 @@ import { ArrowRight, Users, Calendar, Award, Play, ExternalLink } from 'lucide-a
   .btn-primary-hero {
     @apply relative inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-neon-blue to-ieee-blue text-white rounded-xl font-semibold text-lg shadow-glow-blue hover:shadow-glow-ieee transition-all duration-300 transform hover:scale-105 overflow-hidden border border-neon-blue/30;
   }
-  
+
   .btn-secondary-hero {
     @apply inline-flex items-center space-x-3 px-8 py-4 bg-ieee-dark-surface/80 backdrop-blur-md border-2 border-neon-blue/30 text-neon-blue rounded-xl font-semibold text-lg hover:bg-ieee-dark-card hover:border-neon-blue hover:shadow-glow-blue transition-all duration-300;
   }
-  
+
   @keyframes slide-up {
     from {
       opacity: 0;
@@ -176,7 +313,7 @@ import { ArrowRight, Users, Calendar, Award, Play, ExternalLink } from 'lucide-a
       transform: translateY(0);
     }
   }
-  
+
   .animate-slide-up {
     animation: slide-up 0.8s ease-out forwards;
     opacity: 0;

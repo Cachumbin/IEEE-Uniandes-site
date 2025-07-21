@@ -61,7 +61,6 @@ import AuthStatus from "./AuthStatus.tsx";
 
         <!-- Dynamic Auth Status for Desktop -->
         <div class="flex items-center space-x-4">
-          <a href="/join" class="btn-primary-nav">Únete a IEEE</a>
           <AuthStatus client:load />
         </div>
       </div>
@@ -91,13 +90,7 @@ import AuthStatus from "./AuthStatus.tsx";
       <a href="/volunteers" class="mobile-nav-link">Voluntarios</a>
       <a href="/gallery" class="mobile-nav-link">Galería</a>
       <a href="/contact" class="mobile-nav-link">Contacto</a>
-      <a
-        href="/join"
-        class="mobile-nav-link bg-gradient-to-r from-neon-blue to-ieee-blue text-white shadow-glow-blue"
-        >Únete a IEEE</a
-      >
 
-      <!-- Dynamic Auth Status for Mobile -->
       <div class="border-t border-ieee-dark-border pt-4 mt-4">
         <AuthStatus client:load />
       </div>
