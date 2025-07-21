@@ -5,6 +5,7 @@ type TimelineEvent = {
     hour: string,
     location: string,
     type : string,
+    event: string, 
     chapters: Array<string>,
     link: string,
     description: string
@@ -20,6 +21,7 @@ const timeline = [
     hour: "10:00",
     location: "Sala de reuniones, Edificio de Ingeniería",
     type : "Meeting",
+    event: "General",
     chapters: ["RAS", "Computer Society", "IAS"],
     link: "https://...",
     description: "El proyecto comenzó oficialmente con la primera reunión del equipo fundador."
@@ -30,16 +32,18 @@ const timeline = [
     hour: "14:00",
     location: "Laboratorio de Robótica, Edificio Mario Laserna",
     type : "Workshop",
-    link: "https://...",
+    event: "Past event",
     chapters: ["WIE"],
+    link: "https://...",
     description: "Un taller práctico sobre los fundamentos de la robótica y la programación de robots."
   },
   {
     title: "Seminario sobre Inteligencia Artificial",
-    date: "2024-03-05",
+    date: "2024-09-05",
     hour: "16:00",
     location: "RGD-312",
     type : "Seminar",
+    event: "Upcoming event",
     chapters: ["SpaceTech", "IAS"],
     link: "https://...",
     description: "Un seminario sobre las últimas tendencias en inteligencia artificial y su impacto en la industria."
@@ -50,49 +54,226 @@ const timeline = [
     hour: "09:00",
     location: "Auditorio Principal, Edificio Mario Laserna", 
     type : "Hackathon",
+    event: "Recurring event",
     chapters: [],
     link: "https://...",
     description: "Un evento de 24 horas donde los participantes desarrollan soluciones innovadoras a problemas reales."
+  },
+  {
+    title: "Proyecto de Innovación Social",
+    date: "2024-11-15",
+    hour: "11:00",
+    location: "", 
+    type : "Project",
+    event: "Actual project",
+    chapters: [],
+    link: "https://...",
+    description: "Un proyecto que busca aplicar la tecnología para resolver problemas sociales en comunidades locales."
   }
 ];
+
+// Utilidades para filtrar y agrupar
+const today = new Date().toISOString().slice(0, 10);
+
+const generalEvents = timeline.filter(e => e.event === "General");
+const upcomingEvents = timeline.filter(e => e.event === "Upcoming event" && e.date >= today);
+const pastEvents = timeline.filter(e => (e.event === "Past event" || (e.event === "Upcoming event" && e.date < today)));
+const recurringEvents = timeline.filter(e => e.event === "Recurring event");
+const currentProjects = timeline.filter(e => e.type === "Project" || e.event === "Actual project");
+
 ---
+
+// Renderizado
 <section class="relative py-24 bg-ieee-dark-bg">
   <div class="max-w-5xl mx-auto px-6 lg:px-8">
     <h2 class="text-4xl sm:text-5xl font-bold text-ieee-dark-text text-center mb-16 animate-slide-up">
       Our <span class="text-transparent bg-clip-text bg-gradient-to-r from-neon-blue via-neon-purple to-neon-pink">Activities</span>
     </h2>
-    <ol class="relative animate-fade-in timeline-vertical-rounded">
-      {timeline.map((event, index) => (
-        <li class="mb-14 ml-6 relative">
-          <!-- Dot Icon -->
-          <div class="absolute w-5 h-5 bg-ieee-dark-surface border-2 border-neon-blue rounded-full left-[-12px] top-1/2 -translate-y-1/2 z-10 shadow-glow-blue"></div>
-          <!-- Card -->
-          <div class="bg-ieee-dark-surface/60 backdrop-blur-md p-6 rounded-2xl border border-neon-blue/20 shadow-glow-blue hover:shadow-glow-purple transition duration-300">
-            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2 gap-2">
-              <h3 class="text-xl font-semibold text-ieee-dark-text">{event.title}</h3>
-              <span class="text-sm text-neon-blue flex items-center space-x-1">
-                <Calendar size={16} />
-                <span>{event.date}</span>
-                <span class="text-ieee-dark-muted">{event.hour}</span>
-              </span>
-            </div>
-            <div class="flex flex-wrap gap-2 mb-2">
-              <span class="px-2 py-1 rounded bg-neon-blue/10 text-neon-blue text-xs font-semibold">{event.type}</span>
-              <span class="px-2 py-1 rounded bg-neon-purple/10 text-neon-purple text-xs font-semibold">{event.location}</span>
-              {event.chapters.map((chapter) => (
-                <span class="px-2 py-1 rounded bg-neon-green/10 text-neon-green text-xs font-semibold" style="margin-right: 0.25rem;">{chapter}</span>
-              ))}
-            </div>
-            <p class="text-ieee-dark-muted text-base">{event.description}</p>
-            {event.link && (
-              <a href={event.link} target="_blank" rel="noopener" class="inline-block mt-3 px-4 py-2 rounded-lg bg-neon-blue/10 text-neon-blue font-semibold text-sm hover:bg-neon-blue/20 transition">
-                Ver más
-              </a>
-            )}
-          </div>
-        </li>
-      ))}
-    </ol>
+
+    <!-- Eventos Generales -->
+    {generalEvents.length > 0 && (
+      <div class="mb-16">
+        <h3 class="text-2xl font-bold text-neon-blue mb-6">Eventos Generales</h3>
+        <ol class="relative animate-fade-in timeline-vertical-rounded">
+          {generalEvents.map((event, index) => (
+            <li class="mb-14 ml-6 relative">
+              <div class="absolute w-5 h-5 bg-ieee-dark-surface border-2 border-neon-blue rounded-full left-[-12px] top-1/2 -translate-y-1/2 z-10 shadow-glow-blue"></div>
+              <div class="bg-ieee-dark-surface/60 backdrop-blur-md p-6 rounded-2xl border border-neon-blue/20 shadow-glow-blue hover:shadow-glow-purple transition duration-300">
+                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2 gap-2">
+                  <h3 class="text-xl font-semibold text-ieee-dark-text">{event.title}</h3>
+                  <span class="text-sm text-neon-blue flex items-center space-x-1">
+                    <Calendar size={16} />
+                    <span>{event.date}</span>
+                    <span class="text-ieee-dark-muted">{event.hour}</span>
+                  </span>
+                </div>
+                <div class="flex flex-wrap gap-2 mb-2">
+                  <span class="px-2 py-1 rounded bg-neon-blue/10 text-neon-blue text-xs font-semibold">{event.type}</span>
+                  <span class="px-2 py-1 rounded bg-neon-purple/10 text-neon-purple text-xs font-semibold">{event.location}</span>
+                  {event.chapters.map((chapter) => (
+                    <span class="px-2 py-1 rounded bg-neon-green/10 text-neon-green text-xs font-semibold">{chapter}</span>
+                  ))}
+                </div>
+                <p class="text-ieee-dark-muted text-base">{event.description}</p>
+                {event.link && (
+                  <a href={event.link} target="_blank" rel="noopener" class="inline-block mt-3 px-4 py-2 rounded-lg bg-neon-blue/10 text-neon-blue font-semibold text-sm hover:bg-neon-blue/20 transition">
+                    Ver más
+                  </a>
+                )}
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
+    )}
+
+    <!-- Próximos Eventos -->
+    {upcomingEvents.length > 0 && (
+      <div class="mb-16">
+        <h3 class="text-2xl font-bold text-neon-green mb-6">Próximos Eventos</h3>
+        <ol class="relative animate-fade-in timeline-vertical-rounded">
+          {upcomingEvents.map((event, index) => (
+            <li class="mb-14 ml-6 relative">
+              <div class="absolute w-5 h-5 bg-ieee-dark-surface border-2 border-neon-green rounded-full left-[-12px] top-1/2 -translate-y-1/2 z-10 shadow-glow-blue"></div>
+              <div class="bg-ieee-dark-surface/60 backdrop-blur-md p-6 rounded-2xl border border-neon-green/20 shadow-glow-blue hover:shadow-glow-purple transition duration-300">
+                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2 gap-2">
+                  <h3 class="text-xl font-semibold text-ieee-dark-text">{event.title}</h3>
+                  <span class="text-sm text-neon-green flex items-center space-x-1">
+                    <Calendar size={16} />
+                    <span>{event.date}</span>
+                    <span class="text-ieee-dark-muted">{event.hour}</span>
+                  </span>
+                </div>
+                <div class="flex flex-wrap gap-2 mb-2">
+                  <span class="px-2 py-1 rounded bg-neon-green/10 text-neon-green text-xs font-semibold">{event.type}</span>
+                  <span class="px-2 py-1 rounded bg-neon-purple/10 text-neon-purple text-xs font-semibold">{event.location}</span>
+                  {event.chapters.map((chapter) => (
+                    <span class="px-2 py-1 rounded bg-neon-green/10 text-neon-green text-xs font-semibold">{chapter}</span>
+                  ))}
+                </div>
+                <p class="text-ieee-dark-muted text-base">{event.description}</p>
+                {event.link && (
+                  <a href={event.link} target="_blank" rel="noopener" class="inline-block mt-3 px-4 py-2 rounded-lg bg-neon-green/10 text-neon-green font-semibold text-sm hover:bg-neon-green/20 transition">
+                    Ver más
+                  </a>
+                )}
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
+    )}
+
+    <!-- Eventos Pasados -->
+    {pastEvents.length > 0 && (
+      <div class="mb-16">
+        <h3 class="text-2xl font-bold text-neon-purple mb-6">Eventos Pasados</h3>
+        <ol class="relative animate-fade-in timeline-vertical-rounded">
+          {pastEvents.map((event, index) => (
+            <li class="mb-14 ml-6 relative">
+              <div class="absolute w-5 h-5 bg-ieee-dark-surface border-2 border-neon-purple rounded-full left-[-12px] top-1/2 -translate-y-1/2 z-10 shadow-glow-blue"></div>
+              <div class="bg-ieee-dark-surface/60 backdrop-blur-md p-6 rounded-2xl border border-neon-purple/20 shadow-glow-blue hover:shadow-glow-purple transition duration-300">
+                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2 gap-2">
+                  <h3 class="text-xl font-semibold text-ieee-dark-text">{event.title}</h3>
+                  <span class="text-sm text-neon-purple flex items-center space-x-1">
+                    <Calendar size={16} />
+                    <span>{event.date}</span>
+                    <span class="text-ieee-dark-muted">{event.hour}</span>
+                  </span>
+                </div>
+                <div class="flex flex-wrap gap-2 mb-2">
+                  <span class="px-2 py-1 rounded bg-neon-purple/10 text-neon-purple text-xs font-semibold">{event.type}</span>
+                  <span class="px-2 py-1 rounded bg-neon-blue/10 text-neon-blue text-xs font-semibold">{event.location}</span>
+                  {event.chapters.map((chapter) => (
+                    <span class="px-2 py-1 rounded bg-neon-green/10 text-neon-green text-xs font-semibold">{chapter}</span>
+                  ))}
+                </div>
+                <p class="text-ieee-dark-muted text-base">{event.description}</p>
+                {event.link && (
+                  <a href={event.link} target="_blank" rel="noopener" class="inline-block mt-3 px-4 py-2 rounded-lg bg-neon-purple/10 text-neon-purple font-semibold text-sm hover:bg-neon-purple/20 transition">
+                    Ver más
+                  </a>
+                )}
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
+    )}
+
+    <!-- Proyectos Actuales -->
+    {currentProjects.length > 0 && (
+      <div class="mb-16">
+        <h3 class="text-2xl font-bold text-ieee-gold mb-6">Proyectos Actuales</h3>
+        <ol class="relative animate-fade-in timeline-vertical-rounded">
+          {currentProjects.map((event, index) => (
+            <li class="mb-14 ml-6 relative">
+              <div class="absolute w-5 h-5 bg-ieee-dark-surface border-2 border-ieee-gold rounded-full left-[-12px] top-1/2 -translate-y-1/2 z-10 shadow-glow-blue"></div>
+              <div class="bg-ieee-dark-surface/60 backdrop-blur-md p-6 rounded-2xl border border-ieee-gold/20 shadow-glow-blue hover:shadow-glow-purple transition duration-300">
+                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2 gap-2">
+                  <h3 class="text-xl font-semibold text-ieee-dark-text">{event.title}</h3>
+                  <span class="text-sm text-ieee-gold flex items-center space-x-1">
+                    <Calendar size={16} />
+                    <span>{event.date}</span>
+                    <span class="text-ieee-dark-muted">{event.hour}</span>
+                  </span>
+                </div>
+                <div class="flex flex-wrap gap-2 mb-2">
+                  <span class="px-2 py-1 rounded bg-ieee-gold/10 text-ieee-gold text-xs font-semibold">{event.type}</span>
+                  <span class="px-2 py-1 rounded bg-neon-blue/10 text-neon-blue text-xs font-semibold">{event.location}</span>
+                  {event.chapters.map((chapter) => (
+                    <span class="px-2 py-1 rounded bg-neon-green/10 text-neon-green text-xs font-semibold">{chapter}</span>
+                  ))}
+                </div>
+                <p class="text-ieee-dark-muted text-base">{event.description}</p>
+                {event.link && (
+                  <a href={event.link} target="_blank" rel="noopener" class="inline-block mt-3 px-4 py-2 rounded-lg bg-ieee-gold/10 text-ieee-gold font-semibold text-sm hover:bg-ieee-gold/20 transition">
+                    Ver más
+                  </a>
+                )}
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
+    )}
+
+    <!-- Eventos Recurrentes -->
+    {recurringEvents.length > 0 && (
+      <div class="mb-16">
+        <h3 class="text-2xl font-bold text-neon-blue mb-6">Eventos Recurrentes</h3>
+        <ol class="relative animate-fade-in timeline-vertical-rounded">
+          {recurringEvents.map((event, index) => (
+            <li class="mb-14 ml-6 relative">
+              <div class="absolute w-5 h-5 bg-ieee-dark-surface border-2 border-neon-blue rounded-full left-[-12px] top-1/2 -translate-y-1/2 z-10 shadow-glow-blue"></div>
+              <div class="bg-ieee-dark-surface/60 backdrop-blur-md p-6 rounded-2xl border border-neon-blue/20 shadow-glow-blue hover:shadow-glow-purple transition duration-300">
+                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2 gap-2">
+                  <h3 class="text-xl font-semibold text-ieee-dark-text">{event.title}</h3>
+                  <span class="text-sm text-neon-blue flex items-center space-x-1">
+                    <Calendar size={16} />
+                    <span>{event.date}</span>
+                    <span class="text-ieee-dark-muted">{event.hour}</span>
+                  </span>
+                </div>
+                <div class="flex flex-wrap gap-2 mb-2">
+                  <span class="px-2 py-1 rounded bg-neon-blue/10 text-neon-blue text-xs font-semibold">{event.type}</span>
+                  <span class="px-2 py-1 rounded bg-neon-purple/10 text-neon-purple text-xs font-semibold">{event.location}</span>
+                  {event.chapters.map((chapter) => (
+                    <span class="px-2 py-1 rounded bg-neon-green/10 text-neon-green text-xs font-semibold">{chapter}</span>
+                  ))}
+                </div>
+                <p class="text-ieee-dark-muted text-base">{event.description}</p>
+                {event.link && (
+                  <a href={event.link} target="_blank" rel="noopener" class="inline-block mt-3 px-4 py-2 rounded-lg bg-neon-blue/10 text-neon-blue font-semibold text-sm hover:bg-neon-blue/20 transition">
+                    Ver más
+                  </a>
+                )}
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
+    )}
   </div>
 </section>
 
@@ -160,5 +341,4 @@ const timeline = [
     from { opacity: 0; }
     to { opacity: 1; }
   }
-</style>
 </style>
