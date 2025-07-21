@@ -2,7 +2,56 @@
 import Layout from '../layouts/Layout.astro';
 import Navigation from '../components/Navigation.astro';
 import Footer from '../components/Footer.astro';
-import { Mail, MapPin, Users, Linkedin, Instagram, Globe } from 'lucide-astro';
+import { Mail, MapPin, Users, Linkedin, Instagram, Globe, Users2, Lightbulb, Rocket, Cpu, HeartHandshake } from 'lucide-astro';
+
+// Ejemplo de información de subgrupos
+const subgroups = [
+  {
+    name: "RAS",
+    color: "bg-neon-green/10 text-neon-green",
+    icon: Rocket,
+    description: "Robotics & Automation Society: Promueve la robótica y automatización con proyectos, talleres y competencias.",
+    contact: "ras@uniandes.edu.co",
+    members: 35,
+    highlights: ["Taller de robótica", "Competencia nacional", "Proyecto robot autónomo"]
+  },
+  {
+    name: "WIE",
+    color: "bg-neon-purple/10 text-neon-purple",
+    icon: HeartHandshake,
+    description: "Women in Engineering: Fomenta la inclusión y liderazgo femenino en ingeniería con mentorías y eventos.",
+    contact: "wie@uniandes.edu.co",
+    members: 28,
+    highlights: ["Mentorías", "Proyecto social", "Panel de liderazgo"]
+  },
+  {
+    name: "IAS",
+    color: "bg-ieee-gold/10 text-ieee-gold",
+    icon: Lightbulb,
+    description: "Industry Applications Society: Conecta estudiantes con la industria y desarrolla soluciones aplicadas.",
+    contact: "ias@uniandes.edu.co",
+    members: 22,
+    highlights: ["Seminario IA", "Visitas industriales", "Hackathon"]
+  },
+  {
+    name: "Computer Society",
+    color: "bg-neon-blue/10 text-neon-blue",
+    icon: Cpu,
+    description: "Computer Society: Impulsa el desarrollo en computación, software y tecnología digital.",
+    contact: "cs@uniandes.edu.co",
+    members: 30,
+    highlights: ["Taller de programación", "Conferencia de tecnología", "Club de algoritmos"]
+  },
+  {
+    name: "SpaceTech",
+    color: "bg-neon-pink/10 text-neon-pink",
+    icon: Users2,
+    description: "SpaceTech: Explora el espacio y la tecnología aeroespacial con proyectos y charlas especializadas.",
+    contact: "spacetech@uniandes.edu.co",
+    members: 15,
+    highlights: ["Charlas espaciales", "Proyecto satelital"]
+  }
+];
 ---
 
 <Layout title="Contact Us - IEEE Student Branch Universidad de los Andes">
@@ -24,7 +73,10 @@ import { Mail, MapPin, Users, Linkedin, Instagram, Globe } from 'lucide-astro';
                 IEEE Student Branch <br /><span class="text-transparent bg-clip-text bg-gradient-to-r from-neon-blue via-neon-purple to-neon-pink">Uniandes</span>
               </h1>
               <p class="text-lg text-ieee-dark-muted mb-6">
-                Somos una comunidad de estudiantes apasionados por la tecnología, la innovación y el impacto social. Organizamos eventos, talleres, hackatones y charlas con expertos para potenciar el talento y la colaboración en la Universidad de los Andes.
+                <span class="font-bold text-white">Presidente:</span> <a href="mailto:presidente@uniandes.edu.co" class="text-neon-blue hover:underline">mp.alarcon@uniandes.edu.co</a><br />
+                <span class="font-bold text-white">Secretario:</span> <a href="mailto:secretario@uniandes.edu.co" class="text-neon-purple hover:underline">f.gutierreza@uniandes.edu.co</a><br />
+                <span class="font-bold text-white">Secretaria:</span> <a href="mailto:secretaria@uniandes.edu.co" class="text-neon-pink hover:underline">m.lassop@uniandes.edu.co</a><br />
+                <span class="font-bold text-white">Tesorero:</span> <a href="mailto:tesorero@uniandes.edu.co" class="text-ieee-gold hover:underline">ji.cubillos@unaindes.edu.co</a>
               </p>
               <ul class="space-y-4 mb-8">
                 <li class="flex items-center gap-3">
@@ -41,7 +93,7 @@ import { Mail, MapPin, Users, Linkedin, Instagram, Globe } from 'lucide-astro';
                 </li>
               </ul>
               <div class="flex gap-5 mt-2">
-                <a href="https://www.linkedin.com/company/ieee-uniandes/" target="_blank" rel="noopener" class="hover:scale-110 transition">
+                <a href="https://www.linkedin.com/company/rama-ieee-universida-de-los-andes/" target="_blank" rel="noopener" class="hover:scale-110 transition">
                   <Linkedin class="text-neon-blue" size={28} />
                 </a>
                 <a href="https://www.instagram.com/ieeeuniandes/" target="_blank" rel="noopener" class="hover:scale-110 transition">
@@ -68,6 +120,38 @@ import { Mail, MapPin, Users, Linkedin, Instagram, Globe } from 'lucide-astro';
               </form>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Subgrupos IEEE Uniandes -->
+    <section class="relative py-20 bg-ieee-dark-bg">
+      <div class="max-w-6xl mx-auto px-6">
+        <h2 class="text-3xl sm:text-4xl font-bold text-center text-white mb-12 tracking-tight">
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-neon-blue via-neon-purple to-ieee-gold">Contact our chapters</span>
+        </h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+          {subgroups.map((group) => (
+            <div class={`glass-card p-7 rounded-2xl border border-white/10 shadow-lg hover:scale-[1.03] transition-all duration-300 ${group.color}`}>
+              <div class="flex items-center gap-3 mb-4">
+                <group.icon size={32} class={group.color.split(' ')[1]} />
+                <h3 class="text-xl font-bold text-white">{group.name}</h3>
+              </div>
+              <p class="text-ieee-dark-muted mb-3">{group.description}</p>
+              <div class="flex flex-wrap gap-2 mb-2">
+                <span class="px-3 py-1 rounded bg-white/10 text-white text-xs font-semibold">Contacto: {group.contact}</span>
+                <span class="px-3 py-1 rounded bg-neon-green/10 text-neon-green text-xs font-semibold">Miembros: {group.members}</span>
+              </div>
+              <div class="mt-2">
+                <span class="text-xs text-ieee-gold font-bold">Destacados:</span>
+                <ul class="list-disc list-inside ml-3 mt-1 text-sm text-white/90">
+                  {group.highlights.map((h) => (
+                    <li>{h}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
