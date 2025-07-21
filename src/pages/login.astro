@@ -1,0 +1,18 @@
+---
+import Layout from "../layouts/Layout.astro";
+import AuthForm from "../components/AuthForm.tsx";
+import background from "../assets/background.svg";
+---
+
+<Layout title="Admin Login - IEEE Uniandes">
+    <main
+        class="relative flex items-center justify-center min-h-screen py-12 px-4"
+        style=`background-image: url(${background.src}); background-size: cover; background-position: center;`
+    >
+        <div class="absolute inset-0 bg-gray-900/50 backdrop-blur-sm"></div>
+
+        <div class="relative z-10 w-full">
+            <AuthForm client:load />
+        </div>
+    </main>
+</Layout>
