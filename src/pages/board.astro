@@ -1,0 +1,380 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro';
+import { Mail, Linkedin, Github, Award, Users, Calendar, Star } from 'lucide-astro';
+
+const boardMembers = [
+  {
+    id: 1,
+    name: "María Fernanda Rodríguez",
+    position: "President",
+    title: "Presidenta",
+    email: "president@ieee.uniandes.edu.co",
+    linkedin: "https://linkedin.com/in/mfrodriguez",
+    github: "https://github.com/mfrodriguez",
+    bio: "Estudiante de Ingeniería de Sistemas apasionada por la inteligencia artificial y el liderazgo estudiantil. Lidera iniciativas de diversidad e inclusión en tecnología.",
+    major: "Ingeniería de Sistemas y Computación",
+    year: "8vo Semestre",
+    achievements: ["IEEEXtreme 17.0 Top 100", "Google Summer of Code 2024", "Women in Tech Leadership Award"],
+    featured: true
+  },
+  {
+    id: 2,
+    name: "Andrés Felipe Martínez",
+    position: "Vice President",
+    title: "Vicepresidente",
+    email: "vp@ieee.uniandes.edu.co",
+    linkedin: "https://linkedin.com/in/afmartinez",
+    bio: "Enfocado en robótica y automatización. Coordina colaboraciones entre capítulos y lidera proyectos de impacto social usando tecnología.",
+    major: "Ingeniería Electrónica",
+    year: "7mo Semestre",
+    achievements: ["Robotics Competition Winner 2024", "Innovation Project Leader", "Outstanding Student Volunteer"],
+    featured: true
+  },
+  {
+    id: 3,
+    name: "Carolina Vásquez",
+    position: "Secretary",
+    title: "Secretaria",
+    email: "secretary@ieee.uniandes.edu.co",
+    linkedin: "https://linkedin.com/in/cvasquez",
+    bio: "Especialista en gestión de eventos y comunicaciones. Organiza workshops técnicos y mantiene la comunicación efectiva entre miembros.",
+    major: "Ingeniería Industrial",
+    year: "6to Semestre",
+    achievements: ["Event Management Excellence", "Communication Award 2024", "Outstanding Service Recognition"]
+  },
+  {
+    id: 4,
+    name: "Diego Alexander Torres",
+    position: "Treasurer",
+    title: "Tesorero",
+    email: "treasurer@ieee.uniandes.edu.co",
+    linkedin: "https://linkedin.com/in/datorres",
+    bio: "Experto en gestión financiera y análisis de datos. Administra recursos y desarrolla estrategias de sostenibilidad financiera.",
+    major: "Ingeniería Industrial",
+    year: "7mo Semestre",
+    achievements: ["Financial Excellence Award", "Data Analytics Project Leader", "Budget Management Expert"]
+  },
+  {
+    id: 5,
+    name: "Isabella Chen",
+    position: "WIE Chair",
+    title: "Presidenta WIE",
+    email: "wie@ieee.uniandes.edu.co",
+    linkedin: "https://linkedin.com/in/isabella-chen",
+    bio: "Líder en iniciativas de Women in Engineering. Desarrolla programas de mentoring y networking para mujeres en tecnología.",
+    major: "Ingeniería Biomédica",
+    year: "8vo Semestre",
+    achievements: ["WIE Outstanding Leader 2024", "Mentorship Program Creator", "Diversity Champion"]
+  },
+  {
+    id: 6,
+    name: "Santiago Ramírez",
+    position: "CS Chair",
+    title: "Presidente Computer Society",
+    email: "cs@ieee.uniandes.edu.co",
+    linkedin: "https://linkedin.com/in/santiagoramirez",
+    github: "https://github.com/santiagoram",
+    bio: "Desarrollador full-stack y competidor de programación. Organiza hackathons y workshops de tecnologías emergentes.",
+    major: "Ingeniería de Sistemas y Computación",
+    year: "9no Semestre",
+    achievements: ["ACM-ICPC Regional Finalist", "Open Source Contributor", "Hackathon Organizer"]
+  },
+  {
+    id: 7,
+    name: "Valentina Gómez",
+    position: "Webmaster",
+    title: "Administradora Web",
+    email: "webmaster@ieee.uniandes.edu.co",
+    linkedin: "https://linkedin.com/in/valentinagomez",
+    github: "https://github.com/vgomez",
+    bio: "Especialista en desarrollo web y UX/UI. Responsable de la presencia digital del Student Branch y innovaciones tecnológicas.",
+    major: "Ingeniería de Sistemas y Computación",
+    year: "6to Semestre",
+    achievements: ["IEEE Region 9 Website Contest Winner", "UI/UX Design Expert", "Digital Innovation Leader"]
+  },
+  {
+    id: 8,
+    name: "Mateo Herrera",
+    position: "RAS Chair",
+    title: "Presidente RAS",
+    email: "ras@ieee.uniandes.edu.co",
+    linkedin: "https://linkedin.com/in/mateoherrera",
+    bio: "Ingeniero especializado en robótica e IoT. Lidera proyectos de automatización y participa en competencias internacionales.",
+    major: "Ingeniería Mecatrónica",
+    year: "8vo Semestre",
+    achievements: ["Robotics Competition Champion", "IoT Innovation Award", "Research Publication Author"]
+  }
+];
+
+const featuredMembers = boardMembers.filter(member => member.featured);
+const regularMembers = boardMembers.filter(member => !member.featured);
+---
+
+<Layout title="Junta Directiva - IEEE Student Branch Universidad de los Andes">
+  <Navigation />
+  
+  <main class="pt-16">
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-br from-ieee-lightblue via-white to-gray-50 py-20 relative overflow-hidden">
+      <!-- Background Elements -->
+      <div class="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-ieee-blue/5 to-transparent rounded-full blur-3xl"></div>
+      <div class="absolute bottom-0 left-0 w-80 h-80 bg-gradient-to-tr from-ieee-gold/5 to-transparent rounded-full blur-2xl"></div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <div class="text-center">
+          <div class="inline-flex items-center space-x-2 bg-ieee-gold/10 text-ieee-navy px-4 py-2 rounded-full text-sm font-medium mb-6">
+            <Award size={16} class="text-ieee-gold" />
+            <span>Liderazgo Estudiantil</span>
+          </div>
+          
+          <h1 class="font-display font-bold text-4xl sm:text-5xl lg:text-6xl text-gray-900 mb-6">
+            Nuestra
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-ieee-blue to-ieee-navy">
+              Junta Directiva
+            </span>
+          </h1>
+          <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            Conoce a los estudiantes líderes que impulsan la innovación, organizan eventos extraordinarios 
+            y construyen el futuro de la tecnología en nuestra universidad
+          </p>
+
+          <!-- Stats -->
+          <div class="flex justify-center mt-12">
+            <div class="grid grid-cols-3 gap-8">
+              <div class="text-center">
+                <div class="text-3xl font-bold text-ieee-blue">8</div>
+                <div class="text-sm text-gray-600">Líderes Dedicados</div>
+              </div>
+              <div class="text-center">
+                <div class="text-3xl font-bold text-ieee-navy">6</div>
+                <div class="text-sm text-gray-600">Áreas de Especialización</div>
+              </div>
+              <div class="text-center">
+                <div class="text-3xl font-bold text-ieee-gold">200+</div>
+                <div class="text-sm text-gray-600">Estudiantes Impactados</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Leadership -->
+    <section class="py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="font-display font-bold text-3xl text-gray-900 mb-4">
+            Liderazgo Ejecutivo
+          </h2>
+          <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+            Los líderes principales que definen la visión y estrategia de nuestro Student Branch
+          </p>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-8">
+          {featuredMembers.map((member, index) => (
+            <div 
+              class="featured-member-card group animate-fade-in"
+              style={`animation-delay: ${index * 0.2}s`}
+            >
+              <!-- Profile Section -->
+              <div class="flex items-start space-x-6 mb-6">
+                <!-- Avatar -->
+                <div class="relative">
+                  <div class="w-24 h-24 bg-gradient-to-br from-ieee-blue to-ieee-navy rounded-2xl flex items-center justify-center text-white font-bold text-2xl group-hover:scale-105 transition-transform duration-300">
+                    {member.name.split(' ').map(n => n[0]).join('')}
+                  </div>
+                  <div class="absolute -bottom-2 -right-2 w-8 h-8 bg-ieee-gold rounded-full flex items-center justify-center">
+                    <Star size={16} class="text-white" />
+                  </div>
+                </div>
+                
+                <!-- Info -->
+                <div class="flex-1">
+                  <h3 class="font-display font-bold text-2xl text-gray-900 mb-1 group-hover:text-ieee-blue transition-colors">
+                    {member.name}
+                  </h3>
+                  <p class="text-ieee-blue font-semibold mb-2">{member.title}</p>
+                  <p class="text-sm text-gray-600 mb-3">{member.major} • {member.year}</p>
+                  
+                  <!-- Contact Links -->
+                  <div class="flex space-x-3">
+                    <a href={`mailto:${member.email}`} class="contact-link">
+                      <Mail size={16} />
+                    </a>
+                    <a href={member.linkedin} target="_blank" class="contact-link">
+                      <Linkedin size={16} />
+                    </a>
+                    {member.github && (
+                      <a href={member.github} target="_blank" class="contact-link">
+                        <Github size={16} />
+                      </a>
+                    )}
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Bio -->
+              <p class="text-gray-600 leading-relaxed mb-6">
+                {member.bio}
+              </p>
+              
+              <!-- Achievements -->
+              <div class="space-y-3">
+                <h4 class="font-semibold text-gray-900">Logros Destacados</h4>
+                <div class="space-y-2">
+                  {member.achievements.map(achievement => (
+                    <div class="flex items-center space-x-2">
+                      <div class="w-2 h-2 bg-ieee-gold rounded-full"></div>
+                      <span class="text-sm text-gray-700">{achievement}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Board Members Grid -->
+    <section class="py-20 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="font-display font-bold text-3xl text-gray-900 mb-4">
+            Equipo Directivo
+          </h2>
+          <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+            Los líderes especializados que gestionan cada área y capítulo técnico
+          </p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {regularMembers.map((member, index) => (
+            <div 
+              class="member-card group animate-fade-in"
+              style={`animation-delay: ${index * 0.1}s`}
+            >
+              <!-- Header -->
+              <div class="flex items-center space-x-4 mb-4">
+                <div class="w-16 h-16 bg-gradient-to-br from-gray-400 to-gray-600 rounded-xl flex items-center justify-center text-white font-bold text-lg group-hover:from-ieee-blue group-hover:to-ieee-navy transition-all duration-300">
+                  {member.name.split(' ').map(n => n[0]).join('')}
+                </div>
+                <div class="flex-1">
+                  <h3 class="font-semibold text-lg text-gray-900 group-hover:text-ieee-blue transition-colors">
+                    {member.name}
+                  </h3>
+                  <p class="text-ieee-blue font-medium text-sm">{member.title}</p>
+                </div>
+              </div>
+              
+              <!-- Academic Info -->
+              <div class="mb-4">
+                <p class="text-sm text-gray-600 mb-1">{member.major}</p>
+                <p class="text-xs text-gray-500">{member.year}</p>
+              </div>
+              
+              <!-- Bio -->
+              <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                {member.bio}
+              </p>
+              
+              <!-- Achievements -->
+              <div class="mb-4">
+                <h4 class="font-medium text-gray-900 text-sm mb-2">Logros</h4>
+                <div class="space-y-1">
+                  {member.achievements.slice(0, 2).map(achievement => (
+                    <div class="flex items-center space-x-2">
+                      <div class="w-1 h-1 bg-ieee-gold rounded-full"></div>
+                      <span class="text-xs text-gray-600">{achievement}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              
+              <!-- Contact -->
+              <div class="flex space-x-2 pt-4 border-t border-gray-200">
+                <a href={`mailto:${member.email}`} class="contact-link-small">
+                  <Mail size={14} />
+                </a>
+                <a href={member.linkedin} target="_blank" class="contact-link-small">
+                  <Linkedin size={14} />
+                </a>
+                {member.github && (
+                  <a href={member.github} target="_blank" class="contact-link-small">
+                    <Github size={14} />
+                  </a>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-gradient-to-r from-ieee-blue via-ieee-navy to-ieee-blue rounded-3xl p-8 lg:p-12 text-white text-center relative overflow-hidden">
+          <!-- Background Pattern -->
+          <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-4 right-4 w-24 h-24 border border-white/20 rounded-full"></div>
+            <div class="absolute bottom-8 left-8 w-16 h-16 border border-white/20 rounded-lg rotate-45"></div>
+            <div class="absolute top-1/2 left-1/4 w-8 h-8 bg-white/20 rounded-full"></div>
+          </div>
+          
+          <div class="relative max-w-4xl mx-auto">
+            <h3 class="font-display font-bold text-3xl mb-6">
+              ¿Te interesa ser parte del liderazgo?
+            </h3>
+            <p class="text-ieee-lightblue text-lg mb-8 leading-relaxed">
+              Únete a nuestro equipo y desarrolla habilidades de liderazgo mientras impactas 
+              positivamente la comunidad estudiantil de ingeniería y tecnología.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+              <a href="/join" class="btn-white">
+                <Users size={20} />
+                <span>Únete a IEEE</span>
+              </a>
+              <a href="/contact" class="btn-outline-white">
+                <Mail size={20} />
+                <span>Contacta al Equipo</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .featured-member-card {
+    @apply bg-white p-8 rounded-2xl border border-gray-200 hover:border-ieee-blue/30 hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2;
+  }
+  
+  .member-card {
+    @apply bg-white p-6 rounded-xl border border-gray-200 hover:border-ieee-blue/30 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1;
+  }
+  
+  .contact-link {
+    @apply w-10 h-10 bg-gray-100 hover:bg-ieee-blue rounded-lg flex items-center justify-center text-gray-600 hover:text-white transition-all duration-200;
+  }
+  
+  .contact-link-small {
+    @apply w-8 h-8 bg-gray-100 hover:bg-ieee-blue rounded-lg flex items-center justify-center text-gray-600 hover:text-white transition-all duration-200;
+  }
+  
+  .btn-white {
+    @apply inline-flex items-center space-x-2 bg-white text-ieee-navy px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors;
+  }
+  
+  .btn-outline-white {
+    @apply inline-flex items-center space-x-2 border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-ieee-navy transition-all duration-200;
+  }
+</style>

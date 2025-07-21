@@ -1,0 +1,313 @@
+---
+import { Computer, Users, Zap, Cpu, Globe, ArrowRight, ChevronRight, Star } from 'lucide-astro';
+
+const chapters = [
+  {
+    id: 'cs',
+    name: 'Computer Society',
+    icon: Computer,
+    description: 'Explorando el futuro de la computación, IA y desarrollo de software',
+    longDescription: 'Desde machine learning hasta desarrollo web, nuestro capítulo más grande impulsa la innovación en ciencias de la computación.',
+    members: 65,
+    color: 'blue',
+    gradient: 'from-blue-500 to-blue-600',
+    bgGradient: 'from-blue-50 to-blue-100/50',
+    features: ['Machine Learning & AI', 'Competitive Programming', 'Web & Mobile Development', 'Data Science'],
+    featured: true,
+    upcomingEvent: 'Workshop: Deep Learning Fundamentals'
+  },
+  {
+    id: 'wie',
+    name: 'Women in Engineering',
+    icon: Users,
+    description: 'Empoderando mujeres líderes en tecnología e ingeniería',
+    longDescription: 'Creamos oportunidades para que las mujeres lideren la transformación tecnológica con programas de mentoring y networking.',
+    members: 42,
+    color: 'purple',
+    gradient: 'from-purple-500 to-purple-600',
+    bgGradient: 'from-purple-50 to-purple-100/50',
+    features: ['Leadership Programs', 'Mentorship Network', 'Industry Connections', 'Professional Development'],
+    featured: true,
+    upcomingEvent: 'Panel: Women Tech Leaders'
+  },
+  {
+    id: 'pes',
+    name: 'Power & Energy Society',
+    icon: Zap,
+    description: 'Sistemas eléctricos sostenibles y energías renovables',
+    longDescription: 'Investigamos y desarrollamos soluciones energéticas para un futuro sostenible.',
+    members: 28,
+    color: 'yellow',
+    gradient: 'from-yellow-500 to-amber-500',
+    bgGradient: 'from-yellow-50 to-amber-100/50',
+    features: ['Smart Grid Technology', 'Solar & Wind Energy', 'Energy Storage Systems', 'Sustainability Projects'],
+    featured: false,
+    upcomingEvent: 'Workshop: Smart Grid Design'
+  },
+  {
+    id: 'ras',
+    name: 'Robotics & Automation',
+    icon: Cpu,
+    description: 'Robótica inteligente y sistemas de automatización',
+    longDescription: 'Construimos el futuro con robots y sistemas automatizados que mejoran la vida humana.',
+    members: 38,
+    color: 'green',
+    gradient: 'from-green-500 to-emerald-500',
+    bgGradient: 'from-green-50 to-emerald-100/50',
+    features: ['Arduino & Raspberry Pi', 'IoT Systems', 'Industrial Automation', 'AI-Powered Robotics'],
+    featured: false,
+    upcomingEvent: 'Hackathon: Smart Home Solutions'
+  },
+  {
+    id: 'comsoc',
+    name: 'Communications Society',
+    icon: Globe,
+    description: 'Telecomunicaciones y redes de próxima generación',
+    longDescription: 'Conectamos el mundo a través de tecnologías de comunicación avanzadas.',
+    members: 25,
+    color: 'indigo',
+    gradient: 'from-indigo-500 to-indigo-600',
+    bgGradient: 'from-indigo-50 to-indigo-100/50',
+    features: ['5G & 6G Networks', 'Wireless Communications', 'Signal Processing', 'Network Security'],
+    featured: false,
+    upcomingEvent: 'Seminar: 5G Implementation'
+  }
+];
+
+const featuredChapters = chapters.filter(chapter => chapter.featured);
+const regularChapters = chapters.filter(chapter => !chapter.featured);
+---
+
+<section class="py-20 bg-gradient-to-b from-gray-50/50 to-white relative overflow-hidden">
+  <!-- Background Elements -->
+  <div class="absolute top-20 left-10 w-72 h-72 bg-gradient-to-br from-ieee-gold/5 to-transparent rounded-full blur-3xl"></div>
+  <div class="absolute bottom-20 right-10 w-80 h-80 bg-gradient-to-tl from-ieee-blue/5 to-transparent rounded-full blur-2xl"></div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+    <!-- Section Header -->
+    <div class="text-center mb-16">
+      <div class="inline-flex items-center space-x-2 bg-ieee-blue/10 text-ieee-navy px-4 py-2 rounded-full text-sm font-medium mb-6">
+        <Star size={16} class="text-ieee-blue" />
+        <span>Capítulos Técnicos</span>
+      </div>
+      
+      <h2 class="font-display font-bold text-4xl sm:text-5xl text-gray-900 mb-6">
+        Encuentra tu
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-ieee-blue to-ieee-navy">
+          Pasión Técnica
+        </span>
+      </h2>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+        Explora nuestros capítulos especializados donde puedes profundizar en las tecnologías 
+        que están transformando el mundo
+      </p>
+    </div>
+
+    <!-- Featured Chapters - Hero Layout -->
+    <div class="grid lg:grid-cols-2 gap-8 mb-16">
+      {featuredChapters.map((chapter, index) => {
+        const Icon = chapter.icon;
+        return (
+          <div 
+            class="featured-chapter-card group cursor-pointer animate-fade-in"
+            style={`animation-delay: ${index * 0.2}s`}
+          >
+            <!-- Background Gradient -->
+            <div class={`absolute inset-0 bg-gradient-to-br ${chapter.bgGradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl`}></div>
+            
+            <!-- Content -->
+            <div class="relative z-10 p-8">
+              <!-- Header -->
+              <div class="flex items-start justify-between mb-6">
+                <div class={`chapter-icon-large ${chapter.color} group-hover:scale-110 transition-transform duration-300`}>
+                  <Icon size={32} />
+                </div>
+                <div class="text-right">
+                  <div class="text-2xl font-bold text-gray-900">{chapter.members}</div>
+                  <div class="text-sm text-gray-600">miembros</div>
+                </div>
+              </div>
+
+              <!-- Chapter Info -->
+              <div class="space-y-4 mb-6">
+                <h3 class="font-display font-bold text-2xl text-gray-900 group-hover:text-ieee-blue transition-colors">
+                  {chapter.name}
+                </h3>
+                
+                <p class="text-gray-600 leading-relaxed">
+                  {chapter.longDescription}
+                </p>
+              </div>
+
+              <!-- Features Grid -->
+              <div class="grid grid-cols-2 gap-3 mb-6">
+                {chapter.features.map((feature, featureIndex) => (
+                  <div 
+                    class="flex items-center space-x-2 text-sm animate-fade-in"
+                    style={`animation-delay: ${(index * 0.2) + (featureIndex * 0.1)}s`}
+                  >
+                    <div class="w-1.5 h-1.5 bg-ieee-gold rounded-full"></div>
+                    <span class="text-gray-700">{feature}</span>
+                  </div>
+                ))}
+              </div>
+
+              <!-- Upcoming Event -->
+              <div class="bg-white/60 backdrop-blur-sm rounded-lg p-4 mb-6 border border-gray-200/50">
+                <div class="flex items-center space-x-2 text-sm">
+                  <div class="w-2 h-2 bg-ieee-gold rounded-full animate-pulse"></div>
+                  <span class="text-gray-600">Próximo:</span>
+                  <span class="font-medium text-gray-900">{chapter.upcomingEvent}</span>
+                </div>
+              </div>
+
+              <!-- Action Button -->
+              <button class="chapter-btn-featured group/btn w-full">
+                <span>Explorar Capítulo</span>
+                <ArrowRight size={18} class="transition-transform group-hover/btn:translate-x-1" />
+              </button>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+
+    <!-- Regular Chapters Grid -->
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+      {regularChapters.map((chapter, index) => {
+        const Icon = chapter.icon;
+        return (
+          <div 
+            class="regular-chapter-card group cursor-pointer animate-fade-in"
+            style={`animation-delay: ${(index + 2) * 0.1}s`}
+          >
+            <!-- Header -->
+            <div class="flex items-start justify-between mb-4">
+              <div class={`chapter-icon ${chapter.color}`}>
+                <Icon size={24} />
+              </div>
+              <div class="text-right">
+                <span class="text-lg font-bold text-gray-900">{chapter.members}</span>
+                <div class="text-xs text-gray-600">miembros</div>
+              </div>
+            </div>
+
+            <!-- Content -->
+            <div class="space-y-4">
+              <h3 class="font-display font-semibold text-xl text-gray-900 group-hover:text-ieee-blue transition-colors">
+                {chapter.name}
+              </h3>
+              
+              <p class="text-gray-600 text-sm leading-relaxed">
+                {chapter.description}
+              </p>
+
+              <!-- Features -->
+              <div class="space-y-2">
+                {chapter.features.slice(0, 3).map(feature => (
+                  <div class="flex items-center space-x-2">
+                    <div class="w-1 h-1 bg-ieee-gold rounded-full"></div>
+                    <span class="text-xs text-gray-600">{feature}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <!-- Action -->
+            <div class="mt-6 pt-4 border-t border-gray-100">
+              <button class="chapter-btn group/btn w-full">
+                <span>Ver Más</span>
+                <ChevronRight size={16} class="transition-transform group-hover/btn:translate-x-1" />
+              </button>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+
+    <!-- Call to Action Section -->
+    <div class="bg-gradient-to-r from-ieee-blue via-ieee-navy to-ieee-blue rounded-3xl p-8 lg:p-12 text-white relative overflow-hidden">
+      <!-- Background Pattern -->
+      <div class="absolute inset-0 opacity-10">
+        <div class="absolute top-4 right-4 w-24 h-24 border border-white/20 rounded-full"></div>
+        <div class="absolute bottom-8 left-8 w-16 h-16 border border-white/20 rounded-lg rotate-45"></div>
+        <div class="absolute top-1/2 left-1/4 w-8 h-8 bg-white/20 rounded-full"></div>
+      </div>
+      
+      <div class="relative max-w-4xl mx-auto text-center">
+        <h3 class="font-display font-bold text-3xl mb-6">
+          ¿No estás seguro por dónde empezar?
+        </h3>
+        <p class="text-ieee-lightblue text-lg mb-8 leading-relaxed">
+          Nuestros consejeros estudiantiles te ayudarán a encontrar el capítulo perfecto 
+          según tus intereses, objetivos profesionales y pasiones tecnológicas.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/chapters" class="btn-white">
+            <Globe size={20} />
+            <span>Explorar Todos los Capítulos</span>
+          </a>
+          <a href="/contact" class="btn-outline-white">
+            <Users size={20} />
+            <span>Hablar con un Consejero</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .featured-chapter-card {
+    @apply relative bg-white rounded-3xl border border-gray-200 hover:border-ieee-blue/30 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 overflow-hidden;
+  }
+  
+  .regular-chapter-card {
+    @apply bg-white p-6 rounded-xl border border-gray-200 hover:border-ieee-blue/30 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1;
+  }
+  
+  .chapter-icon-large {
+    @apply w-16 h-16 rounded-2xl flex items-center justify-center text-white;
+  }
+  
+  .chapter-icon {
+    @apply w-12 h-12 rounded-lg flex items-center justify-center text-white;
+  }
+  
+  .chapter-icon.blue, .chapter-icon-large.blue {
+    @apply bg-gradient-to-br from-blue-500 to-blue-600;
+  }
+  
+  .chapter-icon.purple, .chapter-icon-large.purple {
+    @apply bg-gradient-to-br from-purple-500 to-purple-600;
+  }
+  
+  .chapter-icon.yellow, .chapter-icon-large.yellow {
+    @apply bg-gradient-to-br from-yellow-500 to-amber-500;
+  }
+  
+  .chapter-icon.green, .chapter-icon-large.green {
+    @apply bg-gradient-to-br from-green-500 to-emerald-500;
+  }
+  
+  .chapter-icon.indigo, .chapter-icon-large.indigo {
+    @apply bg-gradient-to-br from-indigo-500 to-indigo-600;
+  }
+  
+  .chapter-btn-featured {
+    @apply inline-flex items-center justify-center space-x-2 bg-gray-900 hover:bg-ieee-blue text-white px-6 py-3 rounded-lg font-semibold transition-all duration-200 transform hover:scale-105;
+  }
+  
+  .chapter-btn {
+    @apply inline-flex items-center justify-center space-x-2 text-ieee-blue hover:text-white hover:bg-ieee-blue px-4 py-2 rounded-lg font-medium transition-all duration-200 border border-ieee-blue/20 hover:border-ieee-blue;
+  }
+  
+  .btn-white {
+    @apply inline-flex items-center space-x-2 bg-white text-ieee-navy px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors;
+  }
+  
+  .btn-outline-white {
+    @apply inline-flex items-center space-x-2 border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-ieee-navy transition-all duration-200;
+  }
+</style>

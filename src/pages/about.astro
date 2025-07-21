@@ -1,0 +1,289 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro';
+import { Users, Target, Heart, Globe, Award, Lightbulb } from 'lucide-astro';
+---
+
+<Layout title="Quiénes Somos - IEEE Student Branch Universidad de los Andes">
+  <Navigation />
+  
+  <main class="pt-16">
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-br from-ieee-lightblue to-white py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+          <h1 class="font-display font-bold text-4xl sm:text-5xl text-gray-900 mb-6">
+            Quiénes Somos
+          </h1>
+          <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            Somos la representación estudiantil de IEEE en la Universidad de los Andes, 
+            comprometidos con la excelencia técnica y el desarrollo profesional de nuestros miembros.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mission & Vision -->
+    <section class="py-16 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <!-- Mission -->
+          <div class="space-y-6">
+            <div class="flex items-center space-x-3">
+              <div class="w-12 h-12 bg-ieee-blue rounded-lg flex items-center justify-center">
+                <Target size={24} class="text-white" />
+              </div>
+              <h2 class="font-display font-bold text-2xl text-gray-900">Nuestra Misión</h2>
+            </div>
+            <p class="text-gray-600 leading-relaxed">
+              Fomentar la innovación tecnológica, promover la excelencia académica y profesional, 
+              y crear una comunidad de estudiantes apasionados por la ingeniería y la tecnología. 
+              Trabajamos para conectar a nuestros miembros con oportunidades de crecimiento, 
+              networking y desarrollo de habilidades técnicas y de liderazgo.
+            </p>
+          </div>
+
+          <!-- Vision -->
+          <div class="space-y-6">
+            <div class="flex items-center space-x-3">
+              <div class="w-12 h-12 bg-ieee-navy rounded-lg flex items-center justify-center">
+                <Lightbulb size={24} class="text-white" />
+              </div>
+              <h2 class="font-display font-bold text-2xl text-gray-900">Nuestra Visión</h2>
+            </div>
+            <p class="text-gray-600 leading-relaxed">
+              Ser reconocidos como la organización estudiantil líder en tecnología e innovación 
+              en Colombia y América Latina, formando profesionales íntegros que contribuyan 
+              significativamente al avance tecnológico para el beneficio de la humanidad, 
+              alineados con la misión global de IEEE.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Values -->
+    <section class="py-16 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="font-display font-bold text-3xl text-gray-900 mb-4">
+            Nuestros Valores
+          </h2>
+          <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+            Los principios que guían todas nuestras actividades y decisiones como organización
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div class="value-card">
+            <div class="value-icon bg-blue-500">
+              <Award size={24} />
+            </div>
+            <h3 class="font-semibold text-lg text-gray-900 mb-3">Excelencia</h3>
+            <p class="text-gray-600 text-sm">
+              Buscamos la máxima calidad en todo lo que hacemos, desde nuestros eventos 
+              hasta el desarrollo profesional de nuestros miembros.
+            </p>
+          </div>
+
+          <div class="value-card">
+            <div class="value-icon bg-green-500">
+              <Users size={24} />
+            </div>
+            <h3 class="font-semibold text-lg text-gray-900 mb-3">Colaboración</h3>
+            <p class="text-gray-600 text-sm">
+              Fomentamos el trabajo en equipo, el intercambio de conocimientos 
+              y la construcción de una comunidad sólida y diversa.
+            </p>
+          </div>
+
+          <div class="value-card">
+            <div class="value-icon bg-purple-500">
+              <Lightbulb size={24} />
+            </div>
+            <h3 class="font-semibold text-lg text-gray-900 mb-3">Innovación</h3>
+            <p class="text-gray-600 text-sm">
+              Promovemos la creatividad, el pensamiento crítico y la búsqueda 
+              constante de soluciones tecnológicas innovadoras.
+            </p>
+          </div>
+
+          <div class="value-card">
+            <div class="value-icon bg-red-500">
+              <Heart size={24} />
+            </div>
+            <h3 class="font-semibold text-lg text-gray-900 mb-3">Integridad</h3>
+            <p class="text-gray-600 text-sm">
+              Actuamos con honestidad, transparencia y respeto, manteniendo 
+              los más altos estándares éticos en todas nuestras actividades.
+            </p>
+          </div>
+
+          <div class="value-card">
+            <div class="value-icon bg-yellow-500">
+              <Globe size={24} />
+            </div>
+            <h3 class="font-semibold text-lg text-gray-900 mb-3">Diversidad</h3>
+            <p class="text-gray-600 text-sm">
+              Celebramos y promovemos la inclusión de todas las perspectivas, 
+              géneros, culturas y backgrounds en nuestra comunidad.
+            </p>
+          </div>
+
+          <div class="value-card">
+            <div class="value-icon bg-indigo-500">
+              <Target size={24} />
+            </div>
+            <h3 class="font-semibold text-lg text-gray-900 mb-3">Impacto Social</h3>
+            <p class="text-gray-600 text-sm">
+              Utilizamos la tecnología como herramienta para crear soluciones 
+              que beneficien a la sociedad y mejoren la calidad de vida.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- IEEE Alignment -->
+    <section class="py-16 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-gradient-to-r from-ieee-blue to-ieee-navy rounded-2xl p-8 lg:p-12 text-white">
+          <div class="max-w-4xl mx-auto text-center">
+            <h2 class="font-display font-bold text-3xl mb-6">
+              Alineación con la Misión IEEE
+            </h2>
+            <p class="text-ieee-lightblue text-lg leading-relaxed mb-8">
+              Como Student Branch oficial de IEEE, nuestras actividades están completamente 
+              alineadas con la misión global de <strong>"Advancing Technology for Humanity"</strong>. 
+              Organizamos eventos técnicos, workshops de tecnologías emergentes, competencias 
+              de programación y proyectos de impacto social que demuestran cómo la ingeniería 
+              y la tecnología pueden mejorar la vida de las personas.
+            </p>
+            <div class="grid sm:grid-cols-3 gap-6 text-center">
+              <div>
+                <div class="text-2xl font-bold mb-2">200+</div>
+                <div class="text-sm text-ieee-lightblue">Miembros Activos</div>
+              </div>
+              <div>
+                <div class="text-2xl font-bold mb-2">50+</div>
+                <div class="text-sm text-ieee-lightblue">Eventos Anuales</div>
+              </div>
+              <div>
+                <div class="text-2xl font-bold mb-2">5</div>
+                <div class="text-sm text-ieee-lightblue">Capítulos Técnicos</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- History -->
+    <section class="py-16 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="font-display font-bold text-3xl text-gray-900 mb-4">
+            Nuestra Historia
+          </h2>
+          <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+            Un recorrido por los momentos más importantes de nuestro Student Branch
+          </p>
+        </div>
+
+        <div class="max-w-4xl mx-auto">
+          <div class="space-y-8">
+            <div class="timeline-item">
+              <div class="timeline-marker bg-ieee-blue"></div>
+              <div class="timeline-content">
+                <h3 class="font-semibold text-lg text-gray-900 mb-2">2015 - Fundación</h3>
+                <p class="text-gray-600">
+                  Se establece oficialmente el IEEE Student Branch en la Universidad de los Andes 
+                  con 25 miembros fundadores y el apoyo del Departamento de Ingeniería de Sistemas.
+                </p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-marker bg-ieee-navy"></div>
+              <div class="timeline-content">
+                <h3 class="font-semibold text-lg text-gray-900 mb-2">2017 - Primeros Capítulos</h3>
+                <p class="text-gray-600">
+                  Creación de los primeros capítulos técnicos: Computer Society y Women in Engineering, 
+                  marcando el inicio de actividades especializadas por áreas de interés.
+                </p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-marker bg-ieee-gold"></div>
+              <div class="timeline-content">
+                <h3 class="font-semibold text-lg text-gray-900 mb-2">2019 - Reconocimiento Regional</h3>
+                <p class="text-gray-600">
+                  Primer lugar en el IEEE Region 9 Student Website Contest, estableciendo nuestro 
+                  compromiso con la excelencia y la innovación en comunicación digital.
+                </p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-marker bg-purple-500"></div>
+              <div class="timeline-content">
+                <h3 class="font-semibold text-lg text-gray-900 mb-2">2022 - Expansión de Capítulos</h3>
+                <p class="text-gray-600">
+                  Incorporación de Power & Energy Society, Robotics & Automation Society y 
+                  Communications Society, ampliando nuestro alcance técnico.
+                </p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-marker bg-green-500"></div>
+              <div class="timeline-content">
+                <h3 class="font-semibold text-lg text-gray-900 mb-2">2024 - Presente</h3>
+                <p class="text-gray-600">
+                  Con más de 200 miembros activos, somos una de las organizaciones estudiantiles 
+                  técnicas más grandes y activas de la universidad, liderando la innovación tecnológica.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .value-card {
+    @apply bg-white p-6 rounded-xl shadow-sm border border-gray-200 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1;
+  }
+  
+  .value-icon {
+    @apply w-12 h-12 rounded-lg flex items-center justify-center text-white mb-4;
+  }
+  
+  .timeline-item {
+    @apply relative flex items-start space-x-4 pb-8;
+  }
+  
+  .timeline-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: 0.75rem;
+    top: 3rem;
+    bottom: -2rem;
+    width: 2px;
+    background: linear-gradient(to bottom, #e5e7eb, transparent);
+  }
+  
+  .timeline-marker {
+    @apply w-6 h-6 rounded-full border-4 border-white shadow-lg flex-shrink-0 mt-1;
+  }
+  
+  .timeline-content {
+    @apply bg-white p-6 rounded-lg shadow-sm border border-gray-200 flex-1;
+  }
+</style>

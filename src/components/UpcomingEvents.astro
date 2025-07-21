@@ -1,0 +1,304 @@
+---
+import { Calendar, MapPin, Users, ArrowRight, Clock, Zap } from 'lucide-astro';
+
+const events = [
+  {
+    id: 1,
+    title: "Workshop: Introducción a Machine Learning",
+    date: "2025-02-15",
+    time: "14:00",
+    location: "Auditorio ML, Campus",
+    chapter: "Computer Society",
+    attendees: 45,
+    maxAttendees: 60,
+    description: "Explora los fundamentos del aprendizaje automático con casos prácticos usando Python y TensorFlow",
+    type: "workshop",
+    difficulty: "Beginner",
+    featured: true
+  },
+  {
+    id: 2,
+    title: "IEEEXtreme 19.0 - Sesión Preparatoria",
+    date: "2025-02-20",
+    time: "16:00",
+    location: "Laboratorio de Cómputo",
+    chapter: "IEEE Main",
+    attendees: 30,
+    maxAttendees: 40,
+    description: "Entrenamiento intensivo para la competencia mundial de programación más desafiante",
+    type: "competition",
+    difficulty: "Advanced",
+    featured: true
+  },
+  {
+    id: 3,
+    title: "Charla: Women in Engineering Leadership",
+    date: "2025-02-25",
+    time: "18:00",
+    location: "Auditorio Principal WIE",
+    chapter: "WIE",
+    attendees: 60,
+    maxAttendees: 80,
+    description: "Mujeres líderes en tecnología compartiendo experiencias y estrategias de liderazgo",
+    type: "talk",
+    difficulty: "All Levels",
+    featured: false
+  },
+  {
+    id: 4,
+    title: "Hackathon: Smart Cities Solutions",
+    date: "2025-03-05",
+    time: "09:00",
+    location: "Innovation Lab",
+    chapter: "RAS",
+    attendees: 25,
+    maxAttendees: 30,
+    description: "24 horas creando soluciones tecnológicas para ciudades inteligentes",
+    type: "hackathon",
+    difficulty: "Intermediate",
+    featured: false
+  }
+];
+---
+
+<section class="py-20 bg-gradient-to-b from-white to-gray-50/50 relative overflow-hidden">
+  <!-- Background Elements -->
+  <div class="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-ieee-blue/5 to-transparent rounded-full blur-3xl"></div>
+  <div class="absolute bottom-0 left-0 w-80 h-80 bg-gradient-to-tr from-ieee-gold/5 to-transparent rounded-full blur-2xl"></div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+    <!-- Creative Section Header -->
+    <div class="text-center mb-16">
+      <div class="inline-flex items-center space-x-2 bg-ieee-gold/10 text-ieee-navy px-4 py-2 rounded-full text-sm font-medium mb-6">
+        <Zap size={16} class="text-ieee-gold" />
+        <span>Próximamente</span>
+      </div>
+      
+      <h2 class="font-display font-bold text-4xl sm:text-5xl text-gray-900 mb-6">
+        Eventos que
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-ieee-blue to-ieee-navy">
+          Transforman
+        </span>
+      </h2>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+        Descubre experiencias únicas de aprendizaje, networking y crecimiento profesional 
+        diseñadas para impulsar tu carrera tecnológica
+      </p>
+    </div>
+
+    <!-- Featured Events - Asymmetrical Layout -->
+    <div class="grid lg:grid-cols-12 gap-8 mb-12">
+      <!-- Main Featured Event -->
+      <div class="lg:col-span-8">
+        {events.filter(event => event.featured).slice(0, 1).map((event) => (
+          <div class="featured-event-card group cursor-pointer h-full">
+            <!-- Event Header -->
+            <div class="flex justify-between items-start mb-6">
+              <div class="flex items-center space-x-3">
+                <span class={`px-3 py-1 rounded-full text-xs font-semibold ${
+                  event.type === 'workshop' ? 'bg-blue-100 text-blue-700' :
+                  event.type === 'competition' ? 'bg-amber-100 text-amber-700' :
+                  event.type === 'talk' ? 'bg-purple-100 text-purple-700' :
+                  'bg-green-100 text-green-700'
+                }`}>
+                  {event.chapter}
+                </span>
+                <span class="px-2 py-1 bg-ieee-gold/20 text-ieee-navy text-xs font-medium rounded">
+                  Featured
+                </span>
+              </div>
+              
+              <div class="text-right">
+                <div class="text-2xl font-bold text-ieee-blue">
+                  {new Date(event.date).getDate()}
+                </div>
+                <div class="text-sm text-gray-600 font-medium">
+                  {new Date(event.date).toLocaleDateString('es-ES', { month: 'short' })}
+                </div>
+              </div>
+            </div>
+
+            <!-- Event Content -->
+            <div class="space-y-4 mb-6">
+              <h3 class="font-display font-bold text-2xl text-gray-900 group-hover:text-ieee-blue transition-colors leading-tight">
+                {event.title}
+              </h3>
+              
+              <p class="text-gray-600 leading-relaxed text-lg">
+                {event.description}
+              </p>
+            </div>
+
+            <!-- Event Meta -->
+            <div class="grid sm:grid-cols-2 gap-4 mb-6">
+              <div class="flex items-center space-x-3 text-gray-600">
+                <Clock size={18} class="text-ieee-blue" />
+                <span class="font-medium">{event.time}</span>
+              </div>
+              <div class="flex items-center space-x-3 text-gray-600">
+                <MapPin size={18} class="text-ieee-blue" />
+                <span>{event.location}</span>
+              </div>
+            </div>
+
+            <!-- Attendance Progress -->
+            <div class="mb-6">
+              <div class="flex justify-between items-center mb-2">
+                <span class="text-sm font-medium text-gray-700">
+                  {event.attendees}/{event.maxAttendees} Inscritos
+                </span>
+                <span class="text-sm text-ieee-blue font-medium">
+                  {Math.round((event.attendees / event.maxAttendees) * 100)}% ocupado
+                </span>
+              </div>
+              <div class="w-full bg-gray-200 rounded-full h-2">
+                <div 
+                  class="bg-gradient-to-r from-ieee-blue to-ieee-navy h-2 rounded-full transition-all duration-500"
+                  style={`width: ${(event.attendees / event.maxAttendees) * 100}%`}
+                ></div>
+              </div>
+            </div>
+
+            <!-- CTA Button -->
+            <button class="btn-event-primary group/btn w-full">
+              <span>Registrarse Ahora</span>
+              <ArrowRight size={18} class="transition-transform group-hover/btn:translate-x-1" />
+            </button>
+          </div>
+        ))}
+      </div>
+
+      <!-- Secondary Featured Event -->
+      <div class="lg:col-span-4">
+        {events.filter(event => event.featured).slice(1, 2).map((event) => (
+          <div class="standard-event-card group cursor-pointer h-full">
+            <div class="flex justify-between items-start mb-4">
+              <span class={`px-3 py-1 rounded-full text-xs font-semibold ${
+                event.type === 'competition' ? 'bg-amber-100 text-amber-700' : 'bg-blue-100 text-blue-700'
+              }`}>
+                {event.chapter}
+              </span>
+              
+              <div class="text-right">
+                <div class="text-xl font-bold text-ieee-navy">
+                  {new Date(event.date).getDate()}
+                </div>
+                <div class="text-xs text-gray-600">
+                  {new Date(event.date).toLocaleDateString('es-ES', { month: 'short' })}
+                </div>
+              </div>
+            </div>
+
+            <h3 class="font-semibold text-lg text-gray-900 group-hover:text-ieee-blue transition-colors mb-3 leading-tight">
+              {event.title}
+            </h3>
+            
+            <p class="text-gray-600 text-sm leading-relaxed mb-4">
+              {event.description}
+            </p>
+
+            <div class="space-y-3 mb-4">
+              <div class="flex items-center space-x-2 text-sm text-gray-600">
+                <Clock size={16} />
+                <span>{event.time}</span>
+              </div>
+              <div class="flex items-center space-x-2 text-sm text-gray-600">
+                <Users size={16} />
+                <span>{event.attendees} inscritos</span>
+              </div>
+            </div>
+
+            <button class="btn-event-secondary group/btn w-full">
+              <span>Ver Detalles</span>
+              <ArrowRight size={16} class="transition-transform group-hover/btn:translate-x-1" />
+            </button>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Other Events Grid -->
+    <div class="grid md:grid-cols-2 gap-6 mb-12">
+      {events.filter(event => !event.featured).map((event, index) => (
+        <div 
+          class="standard-event-card group cursor-pointer animate-fade-in"
+          style={`animation-delay: ${index * 0.1}s`}
+        >
+          <div class="flex justify-between items-start mb-4">
+            <span class={`px-3 py-1 rounded-full text-xs font-semibold ${
+              event.type === 'talk' ? 'bg-purple-100 text-purple-700' :
+              event.type === 'hackathon' ? 'bg-green-100 text-green-700' :
+              'bg-blue-100 text-blue-700'
+            }`}>
+              {event.chapter}
+            </span>
+            
+            <div class="text-right">
+              <div class="text-lg font-bold text-gray-900">
+                {new Date(event.date).getDate()}
+              </div>
+              <div class="text-xs text-gray-600">
+                {new Date(event.date).toLocaleDateString('es-ES', { month: 'short' })}
+              </div>
+            </div>
+          </div>
+
+          <h3 class="font-semibold text-lg text-gray-900 group-hover:text-ieee-blue transition-colors mb-3">
+            {event.title}
+          </h3>
+          
+          <p class="text-gray-600 text-sm leading-relaxed mb-4">
+            {event.description}
+          </p>
+
+          <div class="flex justify-between items-center text-sm text-gray-600 mb-4">
+            <div class="flex items-center space-x-2">
+              <Clock size={16} />
+              <span>{event.time}</span>
+            </div>
+            <div class="flex items-center space-x-2">
+              <Users size={16} />
+              <span>{event.attendees}</span>
+            </div>
+          </div>
+
+          <button class="btn-event-secondary group/btn w-full">
+            <span>Más Información</span>
+            <ArrowRight size={16} class="transition-transform group-hover/btn:translate-x-1" />
+          </button>
+        </div>
+      ))}
+    </div>
+
+    <!-- Call to Action -->
+    <div class="text-center">
+      <a href="/activities" class="btn-primary-large inline-flex items-center space-x-3">
+        <Calendar size={20} />
+        <span>Ver Calendario Completo</span>
+        <ArrowRight size={20} />
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .featured-event-card {
+    @apply bg-white p-8 rounded-2xl border border-gray-200 hover:border-ieee-blue/30 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2;
+  }
+  
+  .standard-event-card {
+    @apply bg-white p-6 rounded-xl border border-gray-200 hover:border-ieee-blue/30 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1;
+  }
+  
+  .btn-event-primary {
+    @apply inline-flex items-center justify-center space-x-2 bg-gradient-to-r from-ieee-blue to-ieee-navy text-white px-6 py-3 rounded-lg font-semibold hover:shadow-lg transition-all duration-200 transform hover:scale-105;
+  }
+  
+  .btn-event-secondary {
+    @apply inline-flex items-center justify-center space-x-2 border-2 border-gray-200 text-gray-700 px-4 py-2 rounded-lg font-medium hover:border-ieee-blue hover:text-ieee-blue transition-all duration-200;
+  }
+  
+  .btn-primary-large {
+    @apply bg-gradient-to-r from-ieee-blue to-ieee-navy text-white px-8 py-4 rounded-xl font-semibold text-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105;
+  }
+</style>
