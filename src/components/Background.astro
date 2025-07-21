@@ -1,0 +1,106 @@
+---
+// This component encapsulates the animated background from your hero section.
+---
+
+<div class="absolute inset-0 pointer-events-none overflow-hidden">
+    <!-- Innovative Color Blur Orbs -->
+    <div
+        class="absolute top-20 right-10 w-96 h-96 bg-gradient-to-br from-neon-blue/20 to-neon-purple/30 rounded-full blur-3xl animate-float"
+    >
+    </div>
+    <div
+        class="absolute bottom-32 left-16 w-80 h-80 bg-gradient-to-tr from-neon-pink/25 to-ieee-gold/20 rounded-full blur-2xl animate-blur-pulse"
+    >
+    </div>
+    <div
+        class="absolute top-1/3 left-1/4 w-64 h-64 bg-gradient-to-bl from-neon-green/15 to-neon-blue/20 rounded-full blur-2xl animate-float"
+        style="animation-delay: 2s;"
+    >
+    </div>
+
+    <!-- Innovative Geometric Containers -->
+    <div
+        class="absolute top-1/4 left-1/3 w-32 h-32 bg-gradient-to-br from-neon-blue/10 to-transparent border border-neon-blue/20 rotate-45 rounded-2xl animate-float backdrop-blur-xs"
+        style="animation-delay: 1s;"
+    >
+    </div>
+    <div
+        class="absolute bottom-1/4 right-1/4 w-24 h-24 bg-gradient-to-tr from-neon-orange/15 to-transparent border border-neon-orange/30 rotate-12 rounded-xl animate-float backdrop-blur-xs"
+        style="animation-delay: 3s;"
+    >
+    </div>
+    <div
+        class="absolute top-1/2 right-16 w-16 h-16 bg-gradient-to-br from-neon-purple/20 to-transparent border border-neon-purple/40 rotate-45 animate-pulse-slow backdrop-blur-xs"
+    >
+    </div>
+
+    <!-- Floating Tech Elements -->
+    <div
+        class="absolute top-16 left-1/2 w-4 h-4 bg-neon-blue rounded-full animate-bounce-slow shadow-glow-blue"
+    >
+    </div>
+    <div
+        class="absolute bottom-20 right-1/3 w-3 h-3 bg-neon-pink rounded-full animate-bounce-slow shadow-glow-pink"
+        style="animation-delay: 1.5s;"
+    >
+    </div>
+</div>
+
+<style>
+    /* Keyframes for the animations */
+    @keyframes float {
+        0%,
+        100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-20px);
+        }
+    }
+    .animate-float {
+        animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes blur-pulse {
+        0%,
+        100% {
+            filter: blur(48px);
+            opacity: 0.7;
+        }
+        50% {
+            filter: blur(64px);
+            opacity: 1;
+        }
+    }
+    .animate-blur-pulse {
+        animation: blur-pulse 8s ease-in-out infinite;
+    }
+
+    @keyframes pulse-slow {
+        0%,
+        100% {
+            opacity: 1;
+        }
+        50% {
+            opacity: 0.5;
+        }
+    }
+    .animate-pulse-slow {
+        animation: pulse-slow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+    @keyframes bounce-slow {
+        0%,
+        100% {
+            transform: translateY(-25%);
+            animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+        }
+        50% {
+            transform: translateY(0);
+            animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+        }
+    }
+    .animate-bounce-slow {
+        animation: bounce-slow 2s infinite;
+    }
+</style>
