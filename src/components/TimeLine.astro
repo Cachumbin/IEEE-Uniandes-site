@@ -6,18 +6,22 @@ type TimelineEvent = {
     location: string,
     type : string,
     chapters: Array<string>,
+    link: string,
     description: string
 };
 
 
-const timeline: TimelineEvent[] = [
-    {
+import { Calendar } from "lucide-astro";
+
+const timeline = [
+  {
     title: "Fundación del proyecto",
     date: "2024-01-15",
     hour: "10:00",
     location: "Sala de reuniones, Edificio de Ingeniería",
     type : "Meeting",
     chapters: ["RAS", "Computer Society", "IAS"],
+    link: "https://...",
     description: "El proyecto comenzó oficialmente con la primera reunión del equipo fundador."
   },
   {
@@ -26,6 +30,7 @@ const timeline: TimelineEvent[] = [
     hour: "14:00",
     location: "Laboratorio de Robótica, Edificio Mario Laserna",
     type : "Workshop",
+    link: "https://...",
     chapters: ["WIE"],
     description: "Un taller práctico sobre los fundamentos de la robótica y la programación de robots."
   },
@@ -36,155 +41,114 @@ const timeline: TimelineEvent[] = [
     location: "RGD-312",
     type : "Seminar",
     chapters: ["SpaceTech", "IAS"],
+    link: "https://...",
     description: "Un seminario sobre las últimas tendencias en inteligencia artificial y su impacto en la industria."
   }
 ];
 ---
-<!-- Timeline horizontal con línea y conectores -->
-<div class="timeline-horizontal-wrapper">
-  <div class="timeline-horizontal-line"></div>
-  <div class="timeline-horizontal">
-    {timeline.map((event, idx) => (
-      <div class="timeline-horizontal-item">
-        <div class="timeline-horizontal-marker">
-          <span class="timeline-horizontal-dot"></span>
-          <span class="timeline-horizontal-date">{event.date}</span>
-        </div>
-        <div class="timeline-horizontal-content glass-card">
-          <h3>{event.title}</h3>
-          <p>{event.description}</p>
-          <div class="timeline-horizontal-details">
-            <span><b>Hora:</b> {event.hour}</span> | 
-            <span><b>Lugar:</b> {event.location}</span> | 
-            <span><b>Tipo:</b> {event.type}</span>
+<section class="relative py-24 bg-ieee-dark-bg">
+  <div class="max-w-5xl mx-auto px-6 lg:px-8">
+    <h2 class="text-4xl sm:text-5xl font-bold text-ieee-dark-text text-center mb-16 animate-slide-up">
+      Our <span class="text-transparent bg-clip-text bg-gradient-to-r from-neon-blue via-neon-purple to-neon-pink">Activities</span>
+    </h2>
+    <ol class="relative animate-fade-in timeline-vertical-rounded">
+      {timeline.map((event, index) => (
+        <li class="mb-14 ml-6 relative">
+          <!-- Dot Icon -->
+          <div class="absolute w-5 h-5 bg-ieee-dark-surface border-2 border-neon-blue rounded-full left-[-12px] top-1/2 -translate-y-1/2 z-10 shadow-glow-blue"></div>
+          <!-- Card -->
+          <div class="bg-ieee-dark-surface/60 backdrop-blur-md p-6 rounded-2xl border border-neon-blue/20 shadow-glow-blue hover:shadow-glow-purple transition duration-300">
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2 gap-2">
+              <h3 class="text-xl font-semibold text-ieee-dark-text">{event.title}</h3>
+              <span class="text-sm text-neon-blue flex items-center space-x-1">
+                <Calendar size={16} />
+                <span>{event.date}</span>
+                <span class="text-ieee-dark-muted">{event.hour}</span>
+              </span>
+            </div>
+            <div class="flex flex-wrap gap-2 mb-2">
+              <span class="px-2 py-1 rounded bg-neon-blue/10 text-neon-blue text-xs font-semibold">{event.type}</span>
+              <span class="px-2 py-1 rounded bg-neon-purple/10 text-neon-purple text-xs font-semibold">{event.location}</span>
+              {event.chapters.map((chapter) => (
+                <span class="px-2 py-1 rounded bg-neon-green/10 text-neon-green text-xs font-semibold" style="margin-right: 0.25rem;">{chapter}</span>
+              ))}
+            </div>
+            <p class="text-ieee-dark-muted text-base">{event.description}</p>
+            {event.link && (
+              <a href={event.link} target="_blank" rel="noopener" class="inline-block mt-3 px-4 py-2 rounded-lg bg-neon-blue/10 text-neon-blue font-semibold text-sm hover:bg-neon-blue/20 transition">
+                Ver más
+              </a>
+            )}
           </div>
-          <div class="timeline-horizontal-chapters">
-            <b>Chapters:</b> {event.chapters.join(", ")}
-          </div>
-        </div>
-      </div>
-    ))}
+        </li>
+      ))}
+    </ol>
   </div>
-</div>
+</section>
 
 <style>
-  .timeline-horizontal-wrapper {
-    position: relative;
-    padding: 3rem 1rem 2rem 1rem;
-    margin-bottom: 2rem;
+  .bg-ieee-dark-bg {
+    background: #0a0a0f;
   }
-  .timeline-horizontal-line {
-    position: absolute;
-    top: 4.2rem;
-    left: 6vw;
-    right: 6vw;
-    height: 2.5px;
-    background: rgba(0,212,255,0.18);
-    box-shadow: 0 0 24px #00d4ff55, 0 0 8px #8b5cf655;
-    z-index: 0;
-    border-radius: 2px;
-    pointer-events: none;
-    transition: background 0.3s;
-  }
-  .timeline-horizontal {
-    display: flex;
-    flex-direction: row;
-    gap: 2rem;
-    overflow-x: auto;
-    padding: 0;
-    margin: 0;
-    scrollbar-width: thin;
-  }
-  .timeline-horizontal-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-width: 320px;
-    background: transparent;
-    border-radius: 1rem;
-    padding: 0;
-    position: relative;
-    z-index: 1;
-  }
-  .glass-card {
-    width: 100%;
-    background: rgba(26,26,46,0.7);
-    border-radius: 1rem;
-    box-shadow: 0 4px 24px rgba(0,210,255,0.10), 0 1.5px 8px #8b5cf655;
-    border: 2px solid rgba(0,210,255,0.18);
-    backdrop-filter: blur(16px) saturate(120%);
-    padding: 1.5rem;
-    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
-  }
-  .glass-card:hover {
-    transform: translateY(-8px) scale(1.04);
-    box-shadow: 0 8px 32px #00d4ff44, 0 2px 12px #8b5cf655;
-    border-color: #00d4ff;
-  }
-  .timeline-horizontal-marker {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 1rem;
-    position: relative;
-    z-index: 2;
-  }
-  .timeline-horizontal-dot {
-    width: 22px;
-    height: 22px;
-    background: radial-gradient(circle, #00d4ff 60%, #8b5cf6 100%);
-    border-radius: 50%;
-    margin-right: 0.7rem;
-    box-shadow: 0 2px 16px #00d4ff99, 0 1px 8px #8b5cf655;
-    border: 4px solid #fff;
-    position: relative;
-    top: 2px;
-    animation: glow 2s infinite alternate;
-  }
-  @keyframes glow {
-    0% { box-shadow: 0 2px 16px #00d4ff99, 0 1px 8px #8b5cf655; }
-    100% { box-shadow: 0 4px 32px #00d4ffcc, 0 2px 16px #8b5cf699; }
-  }
-  .timeline-horizontal-date {
-    font-weight: bold;
-    color: #00d4ff;
-    font-size: 1rem;
-    letter-spacing: 0.5px;
-    text-shadow: 0 0 8px #00d4ff88;
-  }
-  .timeline-horizontal-content h3 {
-    margin: 0 0 0.5rem 0;
-    font-size: 1.2rem;
-    color: #FDB913;
-    text-align: center;
-    font-family: 'Poppins', sans-serif;
-    font-weight: bold;
-    letter-spacing: 0.5px;
-    text-shadow: 0 0 6px #FDB91344;
-  }
-  .timeline-horizontal-content p {
-    margin: 0 0 0.5rem 0;
+  .text-ieee-dark-text {
     color: #e2e8f0;
-    text-align: center;
-    font-family: 'Inter', sans-serif;
-    font-size: 1rem;
   }
-  .timeline-horizontal-details {
-    font-size: 0.95rem;
+  .text-ieee-dark-muted {
     color: #94a3b8;
-    margin-bottom: 0.5rem;
-    text-align: center;
-    font-family: 'Inter', sans-serif;
   }
-  .timeline-horizontal-chapters {
-    font-size: 0.95rem;
+  .text-neon-blue {
     color: #00d4ff;
-    text-align: center;
-    margin-bottom: 0.5rem;
-    font-family: 'Inter', sans-serif;
-    text-shadow: 0 0 8px #00d4ff55;
+  }
+  .text-neon-purple {
+    color: #8b5cf6;
+  }
+  .text-neon-green {
+    color: #10b981;
+  }
+  .text-ieee-gold {
+    color: #FDB913;
+  }
+  .bg-ieee-dark-surface {
+    background: #1a1a2e;
+  }
+  .timeline-vertical-rounded {
+    border-left: 4px solid #00d4ff4d;
+    box-shadow: 0 0 12px #00d4ff22;
+    padding-left: 2px;
+    border-top-left-radius: 16px;
+    border-bottom-left-radius: 16px;
+  }
+  .border-neon-blue\/20 {
+    border-color: #00d4ff33;
+  }
+  .shadow-glow-blue {
+    box-shadow: 0 0 12px #00d4ff55;
+  }
+  .hover\:shadow-glow-purple:hover {
+    box-shadow: 0 0 24px #8b5cf655;
+  }
+  .bg-ieee-dark-surface\/60 {
+    background: rgba(26,26,46,0.6);
+  }
+  .backdrop-blur-md {
+    backdrop-filter: blur(16px);
+  }
+  .rounded-2xl {
+    border-radius: 1rem;
+  }
+  .animate-slide-up {
+    animation: slideUp 0.8s cubic-bezier(.4,2,.3,1) both;
+  }
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fade-in {
+    animation: fadeIn 1.2s cubic-bezier(.4,2,.3,1) both;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
   }
 </style>
 </style>
