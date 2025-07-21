@@ -1,0 +1,56 @@
+---
+// Props: un arreglo de eventos
+const { events } = Astro.props;
+---
+
+<div class="timeline">
+  {events.map(event => (
+    <div class="timeline-item">
+      <div class="timeline-date">{event.date}</div>
+      <div class="timeline-content">
+        <h3>{event.title}</h3>
+        <p>{event.description}</p>
+      </div>
+    </div>
+  ))}
+</div>
+
+<style>
+  .timeline {
+    border-left: 2px solid #ccc;
+    padding-left: 1rem;
+    margin-left: 1rem;
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 1.5rem;
+  }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -10px;
+    top: 5px;
+    width: 12px;
+    height: 12px;
+    background: #3b82f6; /* azul */
+    border-radius: 50%;
+  }
+
+  .timeline-date {
+    font-weight: bold;
+    color: #555;
+    margin-bottom: 0.3rem;
+  }
+
+  .timeline-content h3 {
+    margin: 0 0 0.2rem 0;
+    font-size: 1.1rem;
+  }
+
+  .timeline-content p {
+    margin: 0;
+    color: #333;
+  }
+</style>
