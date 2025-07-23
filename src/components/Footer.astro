@@ -1,30 +1,50 @@
 ---
-import { Mail, MapPin, Facebook, Instagram, Twitter, Linkedin, ExternalLink } from 'lucide-astro';
+import {
+  Mail,
+  MapPin,
+  Facebook,
+  Instagram,
+  Twitter,
+  Linkedin,
+  ExternalLink,
+} from "lucide-astro";
 ---
 
-<footer class="bg-ieee-dark-bg border-t border-ieee-dark-border relative overflow-hidden">
+<footer
+  class="bg-ieee-dark-bg border-t border-ieee-dark-border relative overflow-hidden"
+>
   <!-- Background Blur Effects -->
   <div class="absolute inset-0 pointer-events-none">
-    <div class="absolute top-0 left-1/4 w-96 h-96 bg-gradient-to-br from-neon-blue/10 to-neon-purple/15 rounded-full blur-3xl"></div>
-    <div class="absolute bottom-0 right-1/4 w-80 h-80 bg-gradient-to-tl from-neon-pink/10 to-ieee-gold/15 rounded-full blur-2xl"></div>
+    <div
+      class="absolute top-0 left-1/4 w-96 h-96 bg-gradient-to-br from-neon-blue/10 to-neon-purple/15 rounded-full blur-3xl"
+    >
+    </div>
+    <div
+      class="absolute bottom-0 right-1/4 w-80 h-80 bg-gradient-to-tl from-neon-pink/10 to-ieee-gold/15 rounded-full blur-2xl"
+    >
+    </div>
   </div>
-  
+
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
     <div class="grid md:grid-cols-4 gap-8">
       <!-- Brand Section -->
       <div class="col-span-1 md:col-span-2">
         <div class="flex items-center space-x-3 mb-4">
-          <div class="w-12 h-12 bg-gradient-to-br from-neon-blue to-ieee-gold rounded-lg flex items-center justify-center shadow-glow-blue border border-neon-blue/30">
+          <div
+            class="w-12 h-12 bg-gradient-to-br from-neon-blue to-ieee-gold rounded-lg flex items-center justify-center shadow-glow-blue border border-neon-blue/30"
+          >
             <span class="text-white font-bold">IEEE</span>
           </div>
           <div>
-            <h3 class="font-display font-bold text-xl text-ieee-dark-text">IEEE Student Branch</h3>
+            <h3 class="font-display font-bold text-xl text-ieee-dark-text">
+              IEEE Student Branch
+            </h3>
             <p class="text-ieee-dark-muted">Universidad de los Andes</p>
           </div>
         </div>
         <p class="text-ieee-dark-muted max-w-md mb-6">
-          Advancing technology for humanity. Conectamos estudiantes apasionados por la tecnología 
-          e innovación en Colombia y América Latina.
+          Advancing technology for humanity. Conectamos estudiantes apasionados
+          por la tecnología e innovación en Colombia y América Latina.
         </p>
         <div class="flex space-x-4">
           <a href="#" class="social-link" aria-label="Facebook">
@@ -44,7 +64,9 @@ import { Mail, MapPin, Facebook, Instagram, Twitter, Linkedin, ExternalLink } fr
 
       <!-- Quick Links -->
       <div>
-        <h4 class="font-semibold text-lg mb-4 text-ieee-dark-text">Enlaces Rápidos</h4>
+        <h4 class="font-semibold text-lg mb-4 text-ieee-dark-text">
+          Enlaces Rápidos
+        </h4>
         <ul class="space-y-2">
           <li><a href="/about" class="footer-link">Quiénes Somos</a></li>
           <li><a href="/board" class="footer-link">Junta Directiva</a></li>
@@ -68,30 +90,34 @@ import { Mail, MapPin, Facebook, Instagram, Twitter, Linkedin, ExternalLink } fr
             <MapPin size={18} class="text-neon-blue mt-0.5" />
             <div>
               <p class="text-sm text-ieee-dark-muted">
-                Universidad de los Andes<br>
+                Universidad de los Andes<br />
                 Bogotá, Colombia
               </p>
             </div>
           </div>
         </div>
-        
+
         <!-- IEEE Official Link -->
         <div class="mt-6 pt-6 border-t border-ieee-dark-border">
-          <a href="https://www.ieee.org" target="_blank" class="inline-flex items-center space-x-2 text-neon-blue hover:text-white transition-colors">
+          <a
+            href="https://www.ieee.org"
+            target="_blank"
+            class="inline-flex items-center space-x-2 text-neon-blue hover:text-white transition-colors"
+          >
             <span class="text-sm font-medium">IEEE.org</span>
             <ExternalLink size={14} />
           </a>
         </div>
       </div>
     </div>
-    
+
     <!-- Bottom Bar -->
-    <div class="mt-12 pt-8 border-t border-ieee-dark-border flex flex-col sm:flex-row justify-between items-center">
+    <div
+      class="mt-12 pt-8 border-t border-ieee-dark-border flex flex-col sm:flex-row justify-between items-center"
+    >
       <p class="text-ieee-dark-muted text-sm">
-        © 2025 IEEE Student Branch Universidad de los Andes. Todos los derechos reservados.
-      </p>
-      <p class="text-ieee-dark-muted text-sm mt-2 sm:mt-0">
-        Diseñado para el IEEE Region 9 Student Website Contest 2025
+        © 2025 IEEE Student Branch Universidad de los Andes. Todos los derechos
+        reservados.
       </p>
     </div>
   </div>
@@ -101,7 +127,7 @@ import { Mail, MapPin, Facebook, Instagram, Twitter, Linkedin, ExternalLink } fr
   .social-link {
     @apply w-10 h-10 bg-ieee-dark-surface border border-ieee-dark-border rounded-full flex items-center justify-center hover:bg-neon-blue hover:border-neon-blue hover:shadow-glow-blue transition-all duration-300;
   }
-  
+
   .footer-link {
     @apply text-ieee-dark-muted hover:text-neon-blue transition-colors duration-300 text-sm;
   }

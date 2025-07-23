@@ -1,259 +1,140 @@
 ---
-import { Calendar, Eye, ArrowRight, Camera, Play, ExternalLink } from 'lucide-astro';
+import {
+  Calendar,
+  Eye,
+  ArrowRight,
+  Camera,
+  Play,
+  ExternalLink,
+} from "lucide-astro";
 
 const newsItems = [
   {
     id: 1,
     title: "IEEEXtreme 18.0: Resultados Excepcionales",
-    excerpt: "Nuestro equipo 'CodeBreakers' logró posicionarse en el top 50 mundial y 1er lugar en Colombia",
+    excerpt:
+      "Nuestro equipo 'CodeBreakers' logró posicionarse en el top 50 mundial y 1er lugar en Colombia",
     date: "2024-12-15",
     views: 342,
     category: "Competencia",
     type: "achievement",
-    image: "https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=600",
-    featured: true
+    image:
+      "https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=600",
+    featured: true,
   },
   {
     id: 2,
     title: "Workshop: Blockchain y Web3 Technologies",
-    excerpt: "Más de 120 participantes exploraron el futuro de las finanzas descentralizadas y contratos inteligentes",
+    excerpt:
+      "Más de 120 participantes exploraron el futuro de las finanzas descentralizadas y contratos inteligentes",
     date: "2024-12-10",
     views: 189,
     category: "Workshop",
     type: "event",
-    image: "https://images.pexels.com/photos/5980856/pexels-photo-5980856.jpeg?auto=compress&cs=tinysrgb&w=600"
+    image:
+      "https://images.pexels.com/photos/5980856/pexels-photo-5980856.jpeg?auto=compress&cs=tinysrgb&w=600",
   },
   {
     id: 3,
     title: "Nuevo Laboratorio de Inteligencia Artificial",
-    excerpt: "Inauguración oficial del AI Lab con equipos NVIDIA RTX 4090 y workstations especializadas",
+    excerpt:
+      "Inauguración oficial del AI Lab con equipos NVIDIA RTX 4090 y workstations especializadas",
     date: "2024-12-05",
     views: 456,
     category: "Infraestructura",
     type: "milestone",
-    image: "https://images.pexels.com/photos/3861972/pexels-photo-3861972.jpeg?auto=compress&cs=tinysrgb&w=600"
+    image:
+      "https://images.pexels.com/photos/3861972/pexels-photo-3861972.jpeg?auto=compress&cs=tinysrgb&w=600",
   },
   {
     id: 4,
     title: "WIE Panel: Mujeres Líderes en Tech",
-    excerpt: "Conversatorio inspirador con CEOs y CTOs de las principales startups tecnológicas de Colombia",
+    excerpt:
+      "Conversatorio inspirador con CEOs y CTOs de las principales startups tecnológicas de Colombia",
     date: "2024-11-28",
     views: 267,
     category: "WIE",
     type: "event",
-    image: "https://images.pexels.com/photos/3184298/pexels-photo-3184298.jpeg?auto=compress&cs=tinysrgb&w=600"
+    image:
+      "https://images.pexels.com/photos/3184298/pexels-photo-3184298.jpeg?auto=compress&cs=tinysrgb&w=600",
   },
   {
     id: 5,
     title: "Hackathon: Smart Cities Challenge",
-    excerpt: "48 horas de innovación resultando en 15 proyectos para resolver desafíos urbanos",
+    excerpt:
+      "48 horas de innovación resultando en 15 proyectos para resolver desafíos urbanos",
     date: "2024-11-20",
     views: 198,
     category: "RAS",
     type: "competition",
-    image: "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=600"
+    image:
+      "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=600",
   },
   {
     id: 6,
     title: "Colaboración Internacional con MIT",
-    excerpt: "Firma de convenio para intercambio estudiantil y proyectos de investigación colaborativa",
+    excerpt:
+      "Firma de convenio para intercambio estudiantil y proyectos de investigación colaborativa",
     date: "2024-11-15",
     views: 523,
     category: "Partnership",
     type: "milestone",
-    image: "https://images.pexels.com/photos/3183186/pexels-photo-3183186.jpeg?auto=compress&cs=tinysrgb&w=600"
-  }
+    image:
+      "https://images.pexels.com/photos/3183186/pexels-photo-3183186.jpeg?auto=compress&cs=tinysrgb&w=600",
+  },
 ];
 
-const featuredNews = newsItems.filter(item => item.featured)[0];
-const regularNews = newsItems.filter(item => !item.featured);
+const featuredNews = newsItems.filter((item) => item.featured)[0];
+const regularNews = newsItems.filter((item) => !item.featured);
 ---
 
-<section class="py-20 bg-gradient-to-b from-white to-gray-50/50 relative overflow-hidden">
+<section
+  class="py-20 bg-gradient-to-b from-white to-gray-50/50 relative overflow-hidden"
+>
   <!-- Background Elements -->
-  <div class="absolute top-0 left-0 w-96 h-96 bg-gradient-to-br from-ieee-gold/5 to-transparent rounded-full blur-3xl"></div>
-  <div class="absolute bottom-0 right-0 w-80 h-80 bg-gradient-to-tl from-ieee-blue/5 to-transparent rounded-full blur-2xl"></div>
+  <div
+    class="absolute top-0 left-0 w-96 h-96 bg-gradient-to-br from-ieee-gold/5 to-transparent rounded-full blur-3xl"
+  >
+  </div>
+  <div
+    class="absolute bottom-0 right-0 w-80 h-80 bg-gradient-to-tl from-ieee-blue/5 to-transparent rounded-full blur-2xl"
+  >
+  </div>
 
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
     <!-- Section Header -->
-    <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-16">
+    <div
+      class="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-16"
+    >
       <div class="mb-6 lg:mb-0">
-        <div class="inline-flex items-center space-x-2 bg-ieee-blue/10 text-ieee-navy px-4 py-2 rounded-full text-sm font-medium mb-4">
+        <div
+          class="inline-flex items-center space-x-2 bg-ieee-blue/10 text-ieee-navy px-4 py-2 rounded-full text-sm font-medium mb-4"
+        >
           <Camera size={16} class="text-ieee-blue" />
           <span>Galería de Actividades</span>
         </div>
-        
-        <h2 class="font-display font-bold text-4xl sm:text-5xl text-gray-900 mb-4">
+
+        <h2
+          class="font-display font-bold text-4xl sm:text-5xl text-gray-900 mb-4"
+        >
           Momentos que
-          <span class="text-transparent bg-clip-text bg-gradient-to-r from-ieee-blue to-ieee-navy">
+          <span
+            class="text-transparent bg-clip-text bg-gradient-to-r from-ieee-blue to-ieee-navy"
+          >
             Inspiran
           </span>
         </h2>
         <p class="text-xl text-gray-600 max-w-2xl leading-relaxed">
-          Revive los eventos, logros y experiencias más destacadas de nuestra comunidad estudiantil
+          Revive los eventos, logros y experiencias más destacadas de nuestra
+          comunidad estudiantil
         </p>
       </div>
-      
+
       <a href="/gallery" class="btn-primary flex-shrink-0">
         <Play size={18} />
         <span>Ver Galería Completa</span>
         <ArrowRight size={18} />
       </a>
-    </div>
-
-    <!-- Featured News & Regular Grid Layout -->
-    <div class="grid lg:grid-cols-12 gap-8">
-      <!-- Featured Story -->
-      <div class="lg:col-span-7">
-        <article class="featured-news-card group cursor-pointer h-full">
-          <!-- Image -->
-          <div class="relative overflow-hidden rounded-2xl mb-6">
-            <img 
-              src={featuredNews.image}
-              alt={featuredNews.title}
-              class="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-105"
-              loading="lazy"
-            />
-            
-            <!-- Overlay Content -->
-            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-            <div class="absolute bottom-6 left-6 right-6">
-              <div class="flex items-center space-x-3 mb-3">
-                <span class="featured-badge">
-                  {featuredNews.category}
-                </span>
-                <span class="featured-badge bg-ieee-gold/90">
-                  Destacado
-                </span>
-              </div>
-              
-              <h3 class="font-display font-bold text-2xl lg:text-3xl text-white mb-2 leading-tight">
-                {featuredNews.title}
-              </h3>
-            </div>
-          </div>
-
-          <!-- Content -->
-          <div class="space-y-4">
-            <p class="text-gray-600 leading-relaxed text-lg">
-              {featuredNews.excerpt}
-            </p>
-
-            <!-- Meta Info -->
-            <div class="flex items-center justify-between">
-              <div class="flex items-center space-x-4 text-sm text-gray-500">
-                <div class="flex items-center space-x-1">
-                  <Calendar size={16} />
-                  <span>{new Date(featuredNews.date).toLocaleDateString('es-ES', { 
-                    day: '2-digit', 
-                    month: 'long',
-                    year: 'numeric'
-                  })}</span>
-                </div>
-                <div class="flex items-center space-x-1">
-                  <Eye size={16} />
-                  <span>{featuredNews.views} vistas</span>
-                </div>
-              </div>
-              
-              <button class="read-more-btn group/btn">
-                <span>Leer Historia Completa</span>
-                <ArrowRight size={16} class="transition-transform group-hover/btn:translate-x-1" />
-              </button>
-            </div>
-          </div>
-        </article>
-      </div>
-
-      <!-- Regular News Grid -->
-      <div class="lg:col-span-5 space-y-6">
-        {regularNews.slice(0, 3).map((item, index) => (
-          <article 
-            class="news-card group cursor-pointer animate-fade-in"
-            style={`animation-delay: ${index * 0.1}s`}
-          >
-            <div class="flex space-x-4">
-              <!-- Image -->
-              <div class="relative flex-shrink-0">
-                <img 
-                  src={item.image}
-                  alt={item.title}
-                  class="w-24 h-24 object-cover rounded-lg transition-transform duration-300 group-hover:scale-105"
-                  loading="lazy"
-                />
-                <div class="absolute top-2 left-2">
-                  <span class={`category-badge-small ${
-                    item.type === 'achievement' ? 'bg-green-500' :
-                    item.type === 'event' ? 'bg-blue-500' :
-                    item.type === 'milestone' ? 'bg-purple-500' :
-                    'bg-gray-500'
-                  }`}>
-                    {item.category}
-                  </span>
-                </div>
-              </div>
-
-              <!-- Content -->
-              <div class="flex-1 min-w-0">
-                <h3 class="font-semibold text-lg text-gray-900 group-hover:text-ieee-blue transition-colors mb-2 line-clamp-2">
-                  {item.title}
-                </h3>
-                
-                <p class="text-gray-600 text-sm leading-relaxed mb-3 line-clamp-2">
-                  {item.excerpt}
-                </p>
-
-                <!-- Meta -->
-                <div class="flex items-center justify-between text-xs text-gray-500">
-                  <span>{new Date(item.date).toLocaleDateString('es-ES', { 
-                    day: '2-digit', 
-                    month: 'short'
-                  })}</span>
-                  <div class="flex items-center space-x-1">
-                    <Eye size={12} />
-                    <span>{item.views}</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </article>
-        ))}
-        
-        <!-- View More Card -->
-        <div class="more-news-card group cursor-pointer">
-          <div class="text-center p-6">
-            <div class="w-12 h-12 bg-ieee-blue/10 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:bg-ieee-blue group-hover:text-white transition-all duration-200">
-              <ExternalLink size={20} class="text-ieee-blue group-hover:text-white" />
-            </div>
-            <h3 class="font-semibold text-lg text-gray-900 group-hover:text-ieee-blue transition-colors mb-2">
-              Ver Más Noticias
-            </h3>
-            <p class="text-gray-600 text-sm">
-              Explora todas nuestras actividades y logros
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Bottom CTA -->
-    <div class="mt-16 text-center">
-      <div class="bg-gradient-to-r from-gray-50 to-ieee-lightblue/20 rounded-2xl p-8">
-        <h3 class="font-display font-bold text-2xl text-gray-900 mb-4">
-          ¿Quieres ser parte de la historia?
-        </h3>
-        <p class="text-gray-600 mb-6 max-w-2xl mx-auto">
-          Únete a IEEE y sé protagonista de los próximos momentos memorables de nuestra comunidad
-        </p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="/join" class="btn-primary">
-            Únete a IEEE
-          </a>
-          <a href="/contact" class="btn-secondary">
-            Recibe Nuestro Newsletter
-          </a>
-        </div>
-      </div>
     </div>
   </div>
 </section>
@@ -262,35 +143,35 @@ const regularNews = newsItems.filter(item => !item.featured);
   .featured-news-card {
     @apply bg-white rounded-2xl border border-gray-200 hover:border-ieee-blue/30 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 p-6;
   }
-  
+
   .news-card {
     @apply bg-white p-4 rounded-xl border border-gray-200 hover:border-ieee-blue/30 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1;
   }
-  
+
   .more-news-card {
     @apply bg-gradient-to-br from-ieee-blue/5 to-ieee-navy/10 rounded-xl border-2 border-dashed border-ieee-blue/30 hover:border-ieee-blue hover:bg-white transition-all duration-300;
   }
-  
+
   .featured-badge {
     @apply bg-black/70 text-white px-3 py-1 rounded-full text-xs font-medium backdrop-blur-sm;
   }
-  
+
   .category-badge-small {
     @apply text-white px-2 py-1 rounded text-xs font-medium;
   }
-  
+
   .read-more-btn {
     @apply inline-flex items-center space-x-2 text-ieee-blue hover:text-ieee-navy font-semibold text-sm transition-colors;
   }
-  
+
   .btn-primary {
     @apply inline-flex items-center space-x-2 bg-gradient-to-r from-ieee-blue to-ieee-navy text-white px-6 py-3 rounded-lg font-semibold hover:shadow-lg transition-all duration-200 transform hover:scale-105;
   }
-  
+
   .btn-secondary {
     @apply inline-flex items-center space-x-2 border-2 border-ieee-blue text-ieee-blue px-6 py-3 rounded-lg font-semibold hover:bg-ieee-blue hover:text-white transition-all duration-200;
   }
-  
+
   .line-clamp-2 {
     display: -webkit-box;
     -webkit-line-clamp: 2;
