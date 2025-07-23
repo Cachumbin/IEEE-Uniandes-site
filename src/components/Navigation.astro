@@ -10,17 +10,13 @@ import AuthStatus from "./AuthStatus.tsx";
     <div class="flex justify-between items-center h-16">
       <!-- Logo -->
       <div class="flex items-center space-x-3">
-        <div
-          class="w-10 h-10 bg-gradient-to-br from-neon-blue to-ieee-blue rounded-lg flex items-center justify-center shadow-glow-blue"
-        >
-          <span class="text-white font-bold text-sm">IEEE</span>
-        </div>
-        <div class="hidden sm:block">
-          <h1 class="font-display font-bold text-ieee-dark-text text-lg">
-            IEEE Student Branch
-          </h1>
-          <p class="text-xs text-ieee-dark-muted">Universidad de los Andes</p>
-        </div>
+        <a href="/">
+          <img
+            src="/assets/logo.png"
+            alt="IEEE Student Branch"
+            class="h-10 object-contain"
+          />
+        </a>
       </div>
 
       <!-- Desktop Navigation -->
