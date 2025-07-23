@@ -22,34 +22,7 @@ import AuthStatus from "./AuthStatus.tsx";
       <!-- Desktop Navigation -->
       <div class="hidden lg:flex items-center space-x-8">
         <a href="/" class="nav-link">Inicio</a>
-        <div class="relative group">
-          <button class="nav-link flex items-center space-x-1">
-            <span>Nosotros</span>
-            <ChevronDown
-              size={16}
-              class="transition-transform group-hover:rotate-180 text-neon-blue"
-            />
-          </button>
-          <div
-            class="absolute top-full left-0 mt-2 w-48 bg-ieee-dark-card/95 backdrop-blur-md rounded-lg shadow-glow-blue border border-ieee-dark-border opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200"
-          >
-            <a
-              href="/about"
-              class="block px-4 py-3 text-sm hover:bg-neon-blue/10 text-ieee-dark-text hover:text-neon-blue transition-colors"
-              >Quiénes Somos</a
-            >
-            <a
-              href="/board"
-              class="block px-4 py-3 text-sm hover:bg-neon-blue/10 text-ieee-dark-text hover:text-neon-blue transition-colors"
-              >Junta Directiva</a
-            >
-            <a
-              href="/volunteers"
-              class="block px-4 py-3 text-sm hover:bg-neon-blue/10 text-ieee-dark-text hover:text-neon-blue transition-colors"
-              >Voluntarios</a
-            >
-          </div>
-        </div>
+        <a href="/about" class="nav-link">Nosotros</a>
         <a href="/chapters" class="nav-link">Capítulos</a>
         <a href="/activities" class="nav-link">Actividades</a>
         <a href="/gallery" class="nav-link">Galería</a>
@@ -79,11 +52,9 @@ import AuthStatus from "./AuthStatus.tsx";
   >
     <div class="px-4 py-4 space-y-2">
       <a href="/" class="mobile-nav-link">Inicio</a>
-      <a href="/about" class="mobile-nav-link">Quiénes Somos</a>
-      <a href="/board" class="mobile-nav-link">Junta Directiva</a>
+      <a href="/about" class="mobile-nav-link">Nosotros</a>
       <a href="/chapters" class="mobile-nav-link">Capítulos</a>
       <a href="/activities" class="mobile-nav-link">Actividades</a>
-      <a href="/volunteers" class="mobile-nav-link">Voluntarios</a>
       <a href="/gallery" class="mobile-nav-link">Galería</a>
       <a href="/contact" class="mobile-nav-link">Contacto</a>
 
