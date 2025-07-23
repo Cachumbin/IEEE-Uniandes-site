@@ -154,7 +154,7 @@ export default function GalleryManager() {
                     </div>
                 )}
                  {!loading && !hasMore && images.length > 0 && (
-                    <p className="text-center py-10 text-ieee-dark-muted">You've reached the end.</p>
+                    <p className="text-center py-10 text-ieee-dark-muted"></p>
                 )}
             </div>
         </>
