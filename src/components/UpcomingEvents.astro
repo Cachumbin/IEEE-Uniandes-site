@@ -4,56 +4,56 @@ import { Calendar, MapPin, Users, ArrowRight, Clock, Zap } from 'lucide-astro';
 const events = [
   {
     id: 1,
-    title: "Workshop: Introducción a Machine Learning",
-    date: "2025-02-15",
-    time: "14:00",
-    location: "Auditorio ML, Campus",
-    chapter: "Computer Society",
+    title: "Charla: Transición Energética y Sistemas de Almacenamiento",
+    date: "2025-03-28",
+    time: "10:00",
+    location: "Auditorio ML-C, Universidad de los Andes y online",
+    chapter: "PELS, PES",
     attendees: 45,
     maxAttendees: 60,
-    description: "Explora los fundamentos del aprendizaje automático con casos prácticos usando Python y TensorFlow",
-    type: "workshop",
+    description: "Ramón compartirá su experiencia en el desarrollo de soluciones energéticas y almacenamiento de energía para Latinoamérica, así como su visión sobre la transición energética en la región. ¡Ideal para estudiantes, profesionales y apasionados por la energía del futuro!                                                               \n Link para entrar a la transmisión virtual: https://uniandes-edu-co.zoom.us/j/2076257225",
+    type: "Charla",
     difficulty: "Beginner",
     featured: true
   },
   {
     id: 2,
-    title: "IEEEXtreme 19.0 - Sesión Preparatoria",
-    date: "2025-02-20",
-    time: "16:00",
-    location: "Laboratorio de Cómputo",
-    chapter: "IEEE Main",
+    title: "Visita a la electroterminal de buses eléctricos",
+    date: "2025-04-24",
+    time: "07:30",
+    location: "Universidad de los Andes (posterior desplazamiento al patio taller Perdomo)",
+    chapter: "PELS, PES, IAS",
     attendees: 30,
     maxAttendees: 40,
-    description: "Entrenamiento intensivo para la competencia mundial de programación más desafiante",
-    type: "competition",
+    description: "¡Inscríbete! https://forms.office.com/r/cXZDpUNtw4?origin=lprLink y contáctanos: pels@uniandes.edu.co",
+    type: "Visita técnica",
     difficulty: "Advanced",
     featured: true
   },
   {
     id: 3,
-    title: "Charla: Women in Engineering Leadership",
-    date: "2025-02-25",
-    time: "18:00",
-    location: "Auditorio Principal WIE",
-    chapter: "WIE",
+    title: "Curso de Diseño de Circuitos Impresos",
+    date: "2025-03-25",
+    time: "14:00",
+    location: "Salon por confirmar",
+    chapter: "PELS, PES",
     attendees: 60,
     maxAttendees: 80,
-    description: "Mujeres líderes en tecnología compartiendo experiencias y estrategias de liderazgo",
-    type: "talk",
+    description: "Queremos extenderles una cordial invitación al curso de Diseño de Circuitos Impresos con Altium, donde exploraremos el proceso completo de diseño de PCBs, desde la creación de esquemáticos hasta la documentación para manufactura. A lo largo del curso, aprenderemos técnicas clave para el diseño, depuración y trazado de circuitos, con un enfoque práctico y aplicable a proyectos reales. ¡No dudes en inscribirte y participar a tu ritmo!",
+    type: "Curso",
     difficulty: "All Levels",
     featured: false
   },
   {
     id: 4,
-    title: "Hackathon: Smart Cities Solutions",
-    date: "2025-03-05",
-    time: "09:00",
+    title: "Semana IEEE 2025",
+    date: "2025-03-24",
+    time: " ",
     location: "Innovation Lab",
-    chapter: "RAS",
+    chapter: "Evento Recurrente",
     attendees: 25,
     maxAttendees: 30,
-    description: "24 horas creando soluciones tecnológicas para ciudades inteligentes",
+    description: "Charlas inspiradoras, participación de nuestros capítulos y muchas sorpresas te esperan en este evento que reúne lo mejor de la ingeniería y la ciencia. Del 25 al 28 de marzo, en la Universidad de los Andes, nos reuniremos para vivir una semana llena de innovación, tecnología y conocimiento. ¡No te lo pierdas!",
     type: "hackathon",
     difficulty: "Intermediate",
     featured: false
@@ -75,14 +75,13 @@ const events = [
       </div>
       
       <h2 class="font-display font-bold text-4xl sm:text-5xl text-gray-900 mb-6">
-        Eventos que
+        Eventos de
         <span class="text-transparent bg-clip-text bg-gradient-to-r from-ieee-blue to-ieee-navy">
-          Transforman
+          Nuestra Rama
         </span>
       </h2>
       <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-        Descubre experiencias únicas de aprendizaje, networking y crecimiento profesional 
-        diseñadas para impulsar tu carrera tecnológica
+        Descubre eventos generales de la rama, eventos relacionados con capítulos, eventos pasados, proyectos en desarrollo y más.
       </p>
     </div>
 
@@ -160,10 +159,10 @@ const events = [
             </div>
 
             <!-- CTA Button -->
-            <button class="btn-event-primary group/btn w-full">
-              <span>Registrarse Ahora</span>
+            <a href="/activities" class="btn-event-primary group/btn w-full">
+              <span>Mas información</span>
               <ArrowRight size={18} class="transition-transform group-hover/btn:translate-x-1" />
-            </button>
+            </a>
           </div>
         ))}
       </div>
@@ -208,10 +207,10 @@ const events = [
               </div>
             </div>
 
-            <button class="btn-event-secondary group/btn w-full">
-              <span>Ver Detalles</span>
+            <a href="/activities" class="btn-event-primary group/btn w-full">
+              <span>Mas información</span>
               <ArrowRight size={16} class="transition-transform group-hover/btn:translate-x-1" />
-            </button>
+            </a>
           </div>
         ))}
       </div>
@@ -232,7 +231,7 @@ const events = [
             }`}>
               {event.chapter}
             </span>
-            
+            {/* Mostrar fecha para todos los eventos */}
             <div class="text-right">
               <div class="text-lg font-bold text-gray-900">
                 {new Date(event.date).getDate()}
@@ -252,20 +251,26 @@ const events = [
           </p>
 
           <div class="flex justify-between items-center text-sm text-gray-600 mb-4">
-            <div class="flex items-center space-x-2">
-              <Clock size={16} />
-              <span>{event.time}</span>
-            </div>
-            <div class="flex items-center space-x-2">
-              <Users size={16} />
-              <span>{event.attendees}</span>
-            </div>
+            {/* No mostrar hora para Semana IEEE 2025 */}
+            {event.title !== 'Semana IEEE 2025' ? (
+              <div class="flex items-center space-x-2">
+                <Clock size={16} />
+                <span>{event.time}</span>
+              </div>
+            ) : <div></div>}
+            {/* No mostrar inscritos para Semana IEEE 2025 */}
+            {event.title !== 'Semana IEEE 2025' && (
+              <div class="flex items-center space-x-2">
+                <Users size={16} />
+                <span>{event.attendees}</span>
+              </div>
+            )}
           </div>
 
-          <button class="btn-event-secondary group/btn w-full">
+          <a href="/activities" class="btn-event-primary group/btn w-full">
             <span>Más Información</span>
             <ArrowRight size={16} class="transition-transform group-hover/btn:translate-x-1" />
-          </button>
+          </a>
         </div>
       ))}
     </div>
